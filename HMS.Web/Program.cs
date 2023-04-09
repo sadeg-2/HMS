@@ -2,6 +2,7 @@ using HMS.Data;
 using HMS.Data.Models;
 using HMS.Infrastructure.AutoMapper;
 using HMS.Infrastructure.Services;
+using HMS.Infrastructure.Services.Auth;
 using HMS.Infrastructure.Services.Users;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -20,11 +21,25 @@ builder.Services.AddDbContext<HMSDbContext>(options =>
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddIdentity<User,IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddIdentity<User,IdentityRole>(
+    config => {
+        config.SignIn.RequireConfirmedAccount = false;
+        config.User.RequireUniqueEmail = true;
+        config.Password.RequireDigit = false;
+        config.Password.RequiredLength = 6;
+        config.Password.RequireLowercase = false;
+        config.Password.RequireNonAlphanumeric = false;
+        config.Password.RequireUppercase = false;
+        config.SignIn.RequireConfirmedEmail = false;
+
+    }
+    
+    )
     .AddEntityFrameworkStores<HMSDbContext>().AddDefaultTokenProviders().AddDefaultUI();
 
 builder.Services.AddRazorPages();
 
+builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddTransient<IFileService, FileService>();
 builder.Services.AddTransient<IEmailService, EmailService>();
