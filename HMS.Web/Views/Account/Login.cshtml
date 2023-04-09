@@ -1,30 +1,39 @@
 ﻿@model LoginViewModel
-
-<div class="row">
-    <div class="col-md-4">
+@{
+    Layout = null;
+}
+<html lang="en">
+<head>
+    <link rel="icon" href="~/images/logo.png" type="image/gif" sizes="16x16">
+    <link href="~/css/styleloginpage.css" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Management System | Login Page</title>
+</head>
+<body>
+    <div class="login-box">
+        <img src="logo.png" alt="Logo" class="avatar">
+        <h1>Login Here</h1>
         <form asp-action="Login" method="post">
-            <h4>Log in</h4>
-            <hr />
-            <div asp-validation-summary="All" class="text-danger"></div>
-            <div class="form-group">
+            <div>
                 <label asp-for="UserName"></label>
-                <input asp-for="UserName" class="form-control" />
+                <input required asp-for="UserName" placeholder="Enter username here" />
                 <span asp-validation-for="UserName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Password"></label>
-                <input asp-for="Password" class="form-control" />
+                <input asp-for="Password" required placeholder="Enter Password here" />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
+            
             <div class="form-group">
-                <div class="form-check">
-                    <input asp-for="RememberMe" class="form-check-input" />
-                    <label asp-for="RememberMe" class="form-check-label"></label>
-                </div>
+                <input type="submit" name="submit" value="Login">
             </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary">Log in</button>
-            </div>
+            <a href="#">Forget Password</a>
         </form>
+
     </div>
-</div>
+
+
+</body>
+</html>
