@@ -5,16 +5,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HMS.Web.Controllers
 {
-    public class UserController : Controller
+    public class UserController : BaseController
     {
-        private readonly IUserService _userService;
-        public UserController(IUserService userService) { 
-            _userService = userService;
-        }
+        public UserController(IUserService userService) : base(userService) { }
         public IActionResult Index()
         {
             
-            return View(_userService.GetAll());
+            return View();
         }
 
         [HttpGet]
@@ -22,7 +19,11 @@ namespace HMS.Web.Controllers
 
             return View();
         }
-
+        public async Task<JsonResult> GetUserData(Pagination pagination, Query query)
+        {
+            var result = await _userService.GetAll(pagination, query);
+            return Json(result);
+        }
         [HttpPost]
         public async Task<IActionResult> Create([FromForm]CreateUserDto createUserDto)
         {
@@ -32,7 +33,7 @@ namespace HMS.Web.Controllers
                 return RedirectToAction("Index");
             }
 
-            return View(createUserDto);
+            return View();
         }
         [HttpGet]
         public async Task<IActionResult> Update(string id)
@@ -47,6 +48,7 @@ namespace HMS.Web.Controllers
             if (ModelState.IsValid)
             {
                 await _userService.Update(updateUserDto);
+                 return RedirectToAction("Index");
             }
 
             return View(updateUserDto);

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="60" height="60" viewBox="0 0 60 60">
+  <defs>
+    <clipPath id="clip-Custom_Size_1">
+      <rect width="60" height="60"/>
+    </clipPath>
+  </defs>
+  <g id="Custom_Size_1" data-name="Custom Size – 1" clip-path="url(#clip-Custom_Size_1)">
+    <rect width="60" height="60" fill="#dfedff"/>
+    <g id="Stockholm-icons-_-Files-_-File" data-name="Stockholm-icons-/-Files-/-File" transform="translate(13 13)">
+      <path id="Shape" d="M0,0H34V34H0Z" fill="none" fill-rule="evenodd"/>
+      <path id="Combined-Shape" d="M6.631,2H17.793a2.125,2.125,0,0,1,1.372.5l6.748,5.708a2.125,2.125,0,0,1,.753,1.622V27.618c0,2.537-.029,2.715-2.631,2.715H6.631c-2.6,0-2.631-.179-2.631-2.715V4.715C4,2.179,4.029,2,6.631,2Z" transform="translate(1.667 0.833)" fill="#2680eb" opacity="0.3"/>
+      <rect id="Rectangle" width="12.75" height="2.833" rx="1" transform="translate(8.5 15.583)" fill="#2680eb"/>
+      <rect id="Rectangle-Copy" width="7.083" height="2.833" rx="1" transform="translate(8.5 21.25)" fill="#2680eb"/>
+    </g>
+  </g>
+</svg>

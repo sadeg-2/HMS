@@ -6,14 +6,12 @@ using System.Diagnostics;
 
 namespace HMS.Web.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         private readonly ILogger<HomeController> _logger;
-        protected readonly IUserService _userService;
 
-        public HomeController( IUserService userService, ILogger<HomeController> logger)
+        public HomeController( IUserService userService, ILogger<HomeController> logger):base(userService)
         {
-            _userService = userService;
             _logger = logger;
         }
 

@@ -11,6 +11,7 @@ namespace HMS.Data.Models
 {
     public class User : IdentityUser
     {
+        
         [Required]
         public string FullName { get; set; }
         public DateTime? DOB { get; set; }
@@ -23,6 +24,12 @@ namespace HMS.Data.Models
         public UserType UserType { get; set; }
         public string? CreatedBy { get; set; }
         public string? UpdatedBy { get; set; }
+
+        public nurse nurse { get; set; }
+
+        public patient patient { get; set; }
+
+        public doctor doctor { get; set; }
 
         public User() {
             CreatedBy = "Me";

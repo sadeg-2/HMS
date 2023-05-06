@@ -15,6 +15,7 @@
         <img src="logo.png" alt="Logo" class="avatar">
         <h1>Login Here</h1>
         <form asp-action="Login" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
             <div>
                 <label asp-for="UserName"></label>
                 <input required asp-for="UserName" placeholder="Enter username here" />

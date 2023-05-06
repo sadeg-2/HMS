@@ -1,0 +1,794 @@
+.m-subheader {
+    padding: 0px 30px 0 30px;
+}
+
+.m-portlet .top_bar .m-form.m-form--fit {
+    padding-top: 1rem
+}
+/*---------------------------------------
+           Target Page
+-----------------------------------------*/
+.m-portlet .m-form.m-form--fit.target_form.m-form {
+    padding-top: 1em
+}
+
+.target_form.m-form .m-form__group > label {
+    width: 90px
+}
+
+.home-content .target_form button.btn.btn-success.submiteForms {
+    margin-left: 16.8em
+}
+/*---------------------------------------
+           Gifts Page
+-----------------------------------------*/
+.gift_form textarea.form-control {
+    height: 80px !important
+}
+
+
+/*---------------------------------------
+           Bill History tab
+-----------------------------------------*/
+.actionLinks button {
+    padding: 0;
+    border: none;
+    color: #716aca;
+    background-color: transparent;
+    cursor: pointer;
+    margin-left: 0.3em;
+}
+
+.actionLinks .la {
+    font: normal normal normal 12px/1 "LineAwesome";
+}
+
+    .actionLinks [class^="flaticon-"], .actionLinks .la.la-check-circle {
+        font-size: 2rem;
+        margin-left: 5px;
+        color: #018786
+    }
+
+    .actionLinks .la.la-check-circle {
+        font-size: 2.4em
+    }
+
+.flaticon-menu-button::before {
+    color: #018786
+}
+
+.sendSms textarea {
+    min-height: 90px
+}
+
+#m_modal_show .modal-body {
+    padding: 1em
+}
+
+#m_modal_show .m-invoice__logo img {
+    width: 35%
+}
+
+#m_modal_show .print i.flaticon-technology {
+    color: white
+}
+
+.accountLink a {
+    font-size: 1.5rem;
+}
+
+.accountLink i.flaticon-list {
+    display: block;
+    padding-left: 1.5em;
+    font-size: 4rem;
+}
+
+.totaltable th {
+    font-weight: bold !important;
+    font-size: 1.1em;
+    color: #000;
+    text-align: right;
+}
+/*.typsTabsdetails  tbody tr td:last-child{
+	width: 50% !important
+}*/
+.hint h4 {
+    padding: 10px;
+    margin-left: 0.8em;
+}
+
+.hint .m-widget2 {
+    width: 100%;
+    padding-right: 2em
+}
+
+.hint .m--bg-danger {
+    background-color: #fde6ea !important;
+}
+
+.Vouchertable .actionLinks [class^="flaticon-"] {
+    margin-left: 10px;
+}
+
+#m_modal_voucher .m-invoice-1.voucher {
+    width: 85% !important;
+}
+
+#m_modal_voucher .s {
+    padding-right: 1em;
+}
+
+.hint2 h4, .hint2 .accountLink {
+    display: inline-block;
+}
+
+    .hint2 .accountLink i.flaticon-list {
+        display: inline-block;
+        font-size: 2rem;
+        padding-left: 11em;
+    }
+
+.hint2 .m-widget2 .m-widget2__item:before {
+    left: -0.2rem;
+}
+
+.hint2 .accountLink a {
+    font-size: 1.2rem;
+}
+
+.hint2 .m-widget2 {
+    padding-right: 1em;
+    padding-left: 1em;
+}
+
+.nav-tabs.maintabs {
+    padding-left: 2em;
+    padding-top: 1em;
+    border-bottom: none;
+    margin-bottom: 0
+}
+
+    .nav-tabs.maintabs .nav-link {
+        font-family: CairoRegular !important;
+        padding: 12px
+    }
+
+        .nav-tabs.maintabs .nav-link.btn.btn-success {
+            background-color: white;
+            border: 1px solid #006a69
+        }
+
+            .nav-tabs.maintabs .nav-link.btn.btn-success.active,
+            .nav-tabs.maintabs .nav-link.btn.btn-success:hover {
+                background-color: #018786;
+                border: 1px solid #006a69
+            }
+
+        .nav-tabs.maintabs .nav-link.btn-brand {
+            background-color: white;
+            border: 1px solid #4d44bd
+        }
+
+            .nav-tabs.maintabs .nav-link.btn-brand.active,
+            .nav-tabs.maintabs .nav-link.btn-brand:hover {
+                background-color: #4940b4;
+                border: 1px solid #4940b4
+            }
+
+
+.invoice-POS {
+    border: 1px solid #dcdbdb;
+    padding: 3mm;
+    margin: auto;
+    width: 10cm;
+    background: #fff;
+    text-align: right;
+}
+
+    .invoice-POS .invoice_title {
+        text-align: center;
+    }
+
+    .invoice-POS .invoice_des {
+        border: none;
+        padding: 6px;
+        text-align: right;
+    }
+
+    .invoice-POS #bot {
+        margin-top: 1em
+    }
+
+#bot h6 {
+    padding-right: 0em;
+    font-weight: bold;
+    font-family: sans-serif
+}
+
+#bot table {
+    direction: rtl
+}
+
+    #bot table td {
+        padding: 0rem;
+        padding-top: 0.7rem;
+    }
+
+        #bot table td:first-child {
+            text-align: right;
+            padding-right: 0rem;
+        }
+
+#bot .table1 h6 {
+    font-size: 11px;
+    font-family: sans-serif;
+    color: #000;
+    font-weight: bold;
+}
+
+.invoice-POS ::selection {
+    background: #f31544;
+    color: #fff;
+}
+
+.invoice-POS ::moz-selection {
+    background: #f31544;
+    color: #fff;
+}
+
+.invoice-POS p {
+    font-size: 12px;
+    color: #000;
+    line-height: 1em;
+    font-weight: bold;
+}
+
+.invoice-POS #top {
+    margin: 1mm;
+}
+
+.invoice-POS #mid {
+    min-height: 80px;
+}
+
+.invoice-POS #bot {
+    min-height: 50px;
+}
+
+.invoice-POS #top .logo {
+    height: 45px;
+    width: 60px;
+    background: url('../media/img/logos/slogo.png') no-repeat;
+    background-size: 100%;
+}
+
+.invoice-POS .info {
+    display: block;
+    margin-left: 0;
+    margin-bottom: 2em
+}
+
+.invoice-POS .title {
+    float: right;
+}
+
+    .invoice-POS .title p {
+        text-align: right;
+    }
+
+.tabletitle {
+    background-color: #ececec;
+}
+
+#invoice-POS .itemtext {
+    font-size: 0.5em;
+}
+
+.invoice-POS.voucherprint .itemtext {
+    font-size: 10.2px;
+}
+
+#bot .amount p.itemtext {
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 0.5em;
+}
+
+#bot .amount .form-control {
+    border-color: #ededed;
+    width: 50%;
+    margin-right: 2em;
+    text-align: center;
+    margin-top: 0.1em;
+    color: #000;
+    font-size: 1.2rem !important;
+}
+
+.maintable {
+    direction: rtl;
+    text-align: right;
+}
+
+    .maintable td {
+        width: 25%;
+        padding-right: 0;
+        border-top: none;
+    }
+
+        .maintable td p {
+            font-size: 1rem;
+            text-align: right;
+        }
+
+#invoice-POS.voucherprint table td {
+    width: 50%
+}
+
+#invoice-POS.voucherprint #top .logo, #invoice-POS3.voucherprint #top .logo {
+    height: auto;
+    width: auto;
+    background: none;
+}
+
+    #invoice-POS.voucherprint #top .logo img {
+        width: 25%
+    }
+
+#bot .amount td {
+    border-top: none;
+}
+
+.print#printv i.flaticon-technology,
+.print#print2 i.flaticon-technology,
+.print#print3 i.flaticon-technology {
+    color: white;
+    font-size: 1em;
+}
+
+#invoice-POS2 {
+    margin-top: 4em
+}
+
+
+@page {
+    size: 10cm 22cm;
+    padding: 2mm;
+    margin: 0;
+    margin-top: -3em
+}
+
+@media print {
+
+
+    body * {
+        visibility: hidden;
+    }
+
+    body.m-content--skin-light2 {
+        background-color: white !important;
+        background: white !important;
+    }
+
+    #invoice, #invoice *,
+    #accountId, #accountId *,
+    #printedVoucher, #printedVoucher *,
+    #invoice-POS, #invoice-POS *,
+    #invoice-POS2, #invoice-POS2 *,
+    #invoice-POS3, #invoice-POS3 * {
+        visibility: visible;
+    }
+
+    #invoice, #accountId, #printedVoucher, #invoice-POS, #invoice-POS2, #invoice-POS3 {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%
+    }
+
+    #print, #print2, .print, .printv, #print3, #print4 {
+        display: none;
+    }
+
+    .invoice-POS {
+        padding: 3mm;
+        border: 5px solid #3c3c3c;
+        ;
+    }
+
+        .invoice-POS h5 {
+            font-size: 1.5rem;
+            font-family: sans-serif;
+            color: #000;
+            font-weight: bold;
+        }
+
+        .invoice-POS h6 {
+            font-size: 1.2rem;
+            font-family: sans-serif;
+            color: #000;
+            font-weight: bold;
+        }
+
+        .invoice-POS .col-2 {
+            -webkit-box-flex: 0;
+            flex: 0 0 16.66667%;
+        }
+
+        .invoice-POS .table td {
+            padding: .5rem;
+        }
+
+        .invoice-POS .invoice_title {
+            text-align: center;
+        }
+
+        .invoice-POS #bot {
+            margin-top: 0.5em
+        }
+
+    #bot h6 {
+        padding-right: 1.5em;
+        font-weight: bold;
+        font-family: sans-serif
+    }
+
+    #bot table {
+        direction: rtl
+    }
+
+        #bot table td {
+            padding: 0rem;
+            padding-top: 0.5rem;
+        }
+
+            #bot table td:first-child {
+                text-align: right;
+                padding-right: 0.5rem;
+            }
+
+    .invoice-POS p {
+        font-size: 1em;
+        color: #000;
+        line-height: 1em;
+        font-weight: bold;
+    }
+
+    .invoice-POS .info {
+        display: block;
+        margin-left: 0;
+    }
+
+    .invoice-POS .title {
+        float: right;
+    }
+
+        .invoice-POS .title p {
+            text-align: right;
+        }
+
+    .tabletitle {
+        background-color: #ececec;
+    }
+
+    #bot .amount .form-control {
+        border-color: #ededed;
+        width: 50%;
+        margin-right: 2em;
+        text-align: center;
+        margin-top: 0.1em;
+    }
+
+    .invoice-POS.voucherprint table td {
+        width: 50%
+    }
+
+    .invoice-POS #top .logo {
+        height: 45px;
+        width: 60px;
+        background-image: url('../media/img/logos/slogo.png') !important;
+        background-repeat: no-repeat !important;
+        background-size: 100% !important;
+        visibility: visible !important;
+        display: block;
+    }
+
+    #bot .amount p.itemtext {
+        font-size: 1.5em;
+        font-weight: bold;
+        font-family: sans-serif
+    }
+
+    .maintable.table td {
+        width: 25%;
+        padding-right: 0
+    }
+
+    .invoice-POS .itemtext, #bot .table1 h6 {
+        font-size: 1em;
+        font-family: sans-serif;
+        padding-right: 0;
+        font-weight: bold;
+    }
+
+    .invoice-POS {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .table {
+        margin-bottom: 0.5rem;
+        padding: 0
+    }
+
+    .invoice-POS.voucherprint .itemtext,
+    .invoice-POS.voucherprint p.itemtext {
+        font-size: 1.5em;
+        font-family: sans-serif
+    }
+
+    .invoice-POS.voucherprint #top .logo {
+        height: auto;
+        width: auto;
+        background: none !important;
+    }
+
+        .invoice-POS.voucherprint #top .logo img {
+            width: 25%
+        }
+
+    #m_modal_voucher .modal-content {
+        font-family: sans-serif !important;
+    }
+
+        #m_modal_voucher .modal-content p.itemtext {
+            font-size: 1.5em !important;
+        }
+
+        #m_modal_voucher .modal-content .invoice-POS .itemtext,
+        #m_modal_voucher .modal-content #bot .table1 h6 {
+            font-size: 1em !important
+        }
+
+    #bot .amount .form-control {
+        font-size: 1.5rem !important;
+    }
+}
+
+.dataTables_paginate, .dataTables_info {
+    display: block !important;
+}
+/*---------------------------------
+            Dis-Point
+----------------------------------*/
+.dispoint label.col-form-label {
+    width: 50px;
+    text-align: right;
+}
+
+.actionLinks a:hover {
+    text-decoration: none;
+}
+
+    .actionLinks a:hover .la,
+    .actionLinks a:hover .flaticon-circle {
+        color: #2739c1
+    }
+
+.ffont {
+    font-size: 12px;
+}
+
+.table-striped.rVouchert tbody tr:nth-of-type(odd).customtr {
+    background-color: white
+}
+
+table.table-bordered.dataTable.rVouchert .customtr td {
+    border-top: 0px
+}
+
+table.table.table-bordered.table-striped.m-table.dataTable.rVouchert tr td:nth-child(6) {
+    width: 0.1% !important
+}
+
+.totally {
+    direction: rtl;
+    text-align: right
+}
+
+    .totally .box1, .totally .box2 {
+        padding: 2em 4em;
+    }
+
+    .totally .box1 {
+        border: 1px solid #ececec;
+        border-top: 7px solid #23ae89;
+        margin-left: 2em;
+        margin-right: 2em;
+    }
+
+    .totally .box2 {
+        border: 1px solid #ececec;
+        border-top: 7px solid #4BAAF5;
+    }
+
+    .totally .box3 {
+        border-top: 0px;
+        background-color: #F1B709
+    }
+
+    .totally .box4 {
+        border-top: 0px;
+        background-color: #f4516c
+    }
+
+    .totally h5 {
+        line-height: 25px
+    }
+
+        .totally h5 span {
+            float: left;
+        }
+
+    .totally .total {
+        line-height: 6em;
+        font-weight: bold;
+        color: #23ae89;
+    }
+
+        .totally .total span,
+        .totally .box3 span,
+        .totally .box4 span {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+    .totally .box3 h5,
+    .totally .box4 h5 {
+        color: white
+    }
+
+
+
+/*---------------------------------
+            Dis-Point
+----------------------------------*/
+.dispoint label.col-form-label {
+    width: 50px;
+    text-align: right;
+}
+
+.actionLinks a:hover {
+    text-decoration: none;
+}
+
+    .actionLinks a:hover .la,
+    .actionLinks a:hover .flaticon-circle {
+        color: #2739c1
+    }
+
+.dispoint .nav.nav-tabs {
+    width: 100%;
+    margin-right: 1em;
+    margin-left: 3em;
+}
+
+.dis_save button {
+    float: right;
+    margin-right: 3em
+}
+
+.dispoint hr {
+    margin-right: 1em;
+    margin-left: 2em
+}
+
+.dispoint .m-form__group.row .m-checkbox-list {
+    margin-left: 2em;
+    margin-top: 0.5em;
+}
+
+.dispoint .dataTables_wrapper .dataTable {
+    width: 80% !important;
+    margin: auto !important;
+}
+
+#new_record.modal .modal-content .modal-header {
+    padding: 10px;
+}
+
+#new_record.modal .col-lg-7 button {
+    float: right;
+}
+
+.point_table .m-portlet__head {
+    border-bottom: none;
+}
+
+.dis_save button {
+    margin-right: 3.5em
+}
+
+.m-portlet__body.point_body {
+    padding: 6em;
+    padding-bottom: 12em;
+}
+
+.chatgeRestor_Form label.col-form-label {
+    text-align: left !important;
+}
+
+.dispoint input:checked + label {
+    background: white;
+    border-bottom: 3px solid #018786;
+    color: #000;
+    border-radius: 0
+}
+
+.dispoint input + label {
+    background: #f7f7f7;
+    padding: 4px;
+    border-radius: 0;
+    margin-left: 12px;
+}
+
+#chargemodal.modal .modal-content .modal-header,
+#chargemodal2.modal .modal-content .modal-header {
+    padding: 10px;
+}
+
+#chargemodal label,
+#chargemodal2 label {
+    font-size: 16px
+}
+
+    #chargemodal label span,
+    #chargemodal2 label span {
+        color: #018786;
+        font-weight: bold
+    }
+
+#chargemodal .btn,
+#chargemodal2 .btn {
+    float: right;
+    margin-right: 5px;
+}
+
+#dispint_4 form button {
+   /* margin-left: 11.7em;*/
+    padding: 6px 10px;
+}
+
+.chatgeRestor_Form {
+    margin: 1em;
+    margin-top: 2em;
+}
+#charge_tab label.col-form-label {
+    width:90px !important
+}
+.chatgeRestor_Form textarea {
+    height: 100px !important;
+    width: 250px !important;
+}
+/*----------------------------------
+      debtor_table page 
+------------------------------------*/
+.simple-tree-table td {
+    padding-left: 3em
+}
+
+    .simple-tree-table td.main_td {
+        padding-left: 2em;
+        font-weight: bold;
+    }
+
+.simple-tree-table p {
+    display: inline-block !important;
+    font-weight: bold;
+    margin-right: 1em;
+    font-size: 1.2em
+}
+
+    .simple-tree-table p span {
+        display: none !important;
+}
+

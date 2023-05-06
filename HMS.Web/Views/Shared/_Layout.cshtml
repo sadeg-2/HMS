@@ -1,56 +1,426 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿<html lang="en" direction="rtl" style="direction: rtl;">
 <head>
+    <base href="../../../">
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - HMS.Web</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/HMS.Web.styles.css" asp-append-version="true" />
+    <title>@ViewData["Title"] </title>
+    <link rel="icon" href="~/title_logo.png"
+          type="image/x-icon">ا
+
+    <meta name="description" content="Initialized via remote ajax json data" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="canonical" href="https://keenthemes.com/metronic" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+
+    <link href="~/assets/plugins/global/plugins.bundle.rtl.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/plugins/custom/prismjs/prismjs.bundle.rtl.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/style.bundle.rtl.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/themes/layout/header/base/light.rtl.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/themes/layout/header/menu/light.rtl.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/themes/layout/brand/light.rtl.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/themes/layout/aside/light.rtl.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="/LogoIcon.jpg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200&display=swap" rel="stylesheet">
+    <link href="~/css/Elghad.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+
+    <style>
+
+        body {
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .datatable.datatable-default.datatable-head-custom > .datatable-table > .datatable-foot .datatable-row > .datatable-cell > span, .datatable.datatable-default.datatable-head-custom > .datatable-table > .datatable-head .datatable-row > .datatable-cell > span {
+            color: #3699FF !important;
+            font-size: 1rem !important;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: .1rem;
+        }
+
+        .datatable-cell {
+            padding: 5px !important;
+        }
+
+        .d-flex flex-column flex-row-fluid wrapper {
+            padding-top: 40px !important;
+        }
+
+        .content d-flex flex-column flex-column-fluid {
+            padding-top: 0px !important;
+        }
+
+        .menu-text {
+            margin-right: 15px !important;
+            font-size: 14px !important;
+        }
+
+        .menu-link {
+            padding-bottom: 10px !important;
+        }
+
+        #kt_wrapper {
+            padding-top: 70px !important;
+        }
+
+        .card-body {
+            padding-top: 5px !important;
+        }
+    </style>
+
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">HMS.Web</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Index">Users</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
-                        </li>
-                    </ul>
-                    <partial name="_LoginPartial" />
+<body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading">
+    <div class="page-loader page-loader-logo">
+        <img alt="Logo" class="max-h-90px" src="~/ThemImages/HMS.png" />
+        <div class="spinner spinner-primary"></div>
+    </div>
+    <div id="kt_header_mobile" class="header-mobile align-items-center header-mobile-fixed">
+        <a href="/">
+            <img alt="Logo" width="30%" src="~/ThemImages/HMS.png" />
+        </a>
+        <div class="d-flex align-items-center">
+            <button class="btn p-0 burger-icon burger-icon-left" id="kt_aside_mobile_toggle">
+                <span></span>
+            </button>
+            <button class="btn p-0 burger-icon ml-4" id="kt_header_mobile_toggle">
+                <span></span>
+            </button>
+            <button class="btn btn-hover-text-primary p-0 ml-2" id="kt_header_mobile_topbar_toggle">
+                <span class="svg-icon svg-icon-xl">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <polygon points="0 0 24 0 24 24 0 24" />
+                            <path d="M12,11 C9.790861,11 8,9.209139 8,7 C8,4.790861 9.790861,3 12,3 C14.209139,3 16,4.790861 16,7 C16,9.209139 14.209139,11 12,11 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
+                            <path d="M3.00065168,20.1992055 C3.38825852,15.4265159 7.26191235,13 11.9833413,13 C16.7712164,13 20.7048837,15.2931929 20.9979143,20.2 C21.0095879,20.3954741 20.9979143,21 20.2466999,21 C16.541124,21 11.0347247,21 3.72750223,21 C3.47671215,21 2.97953825,20.45918 3.00065168,20.1992055 Z" fill="#000000" fill-rule="nonzero" />
+                        </g>
+                    </svg>
+                </span>
+            </button>
+        </div>
+    </div>
+    <div class="d-flex flex-column flex-root">
+        <div class="d-flex flex-row flex-column-fluid page">
+            <div class="aside aside-left aside-fixed d-flex flex-column flex-row-auto" id="kt_aside">
+                <div class="brand flex-column-auto" id="kt_brand">
+                    <a href="index.html" class="brand-logo">
+                        <img style="margin-right:36px !important" alt="Logo" width="55%" src="~/ThemImages/HMS.png" />
+                    </a>
+                    <button class="brand-toggle btn btn-sm px-0" id="kt_aside_toggle">
+                        <span class="svg-icon svg-icon svg-icon-xl">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <polygon points="0 0 24 0 24 24 0 24" />
+                                    <path d="M5.29288961,6.70710318 C4.90236532,6.31657888 4.90236532,5.68341391 5.29288961,5.29288961 C5.68341391,4.90236532 6.31657888,4.90236532 6.70710318,5.29288961 L12.7071032,11.2928896 C13.0856821,11.6714686 13.0989277,12.281055 12.7371505,12.675721 L7.23715054,18.675721 C6.86395813,19.08284 6.23139076,19.1103429 5.82427177,18.7371505 C5.41715278,18.3639581 5.38964985,17.7313908 5.76284226,17.3242718 L10.6158586,12.0300721 L5.29288961,6.70710318 Z" fill="#000000" fill-rule="nonzero" transform="translate(8.999997, 11.999999) scale(-1, 1) translate(-8.999997, -11.999999)" />
+                                    <path d="M10.7071009,15.7071068 C10.3165766,16.0976311 9.68341162,16.0976311 9.29288733,15.7071068 C8.90236304,15.3165825 8.90236304,14.6834175 9.29288733,14.2928932 L15.2928873,8.29289322 C15.6714663,7.91431428 16.2810527,7.90106866 16.6757187,8.26284586 L22.6757187,13.7628459 C23.0828377,14.1360383 23.1103407,14.7686056 22.7371482,15.1757246 C22.3639558,15.5828436 21.7313885,15.6103465 21.3242695,15.2371541 L16.0300699,10.3841378 L10.7071009,15.7071068 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" transform="translate(15.999997, 11.999999) scale(-1, 1) rotate(-270.000000) translate(-15.999997, -11.999999)" />
+                                </g>
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+                <div class="aside-menu-wrapper flex-column-fluid" id="kt_aside_menu_wrapper">
+                    <div id="kt_aside_menu" class="aside-menu my-4" data-menu-vertical="1" data-menu-scroll="1" data-menu-dropdown-timeout="500">
+                        <ul class="menu-nav">
+                            @if (ViewBag.UserType == "Administrator")
+                            {
+                                <li class="menu-item menu-item-active" aria-haspopup="true">
+                                    <a href="~/Home/Index" class="menu-link">
+                                        <span class="svg-icon svg-icon-primary svg-icon-2x">
+                                            <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo1/dist/../src/media/svg/icons/Home/Home-heart.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                    <rect x="0" y="0" width="24" height="24" />
+                                                    <path d="M3.95709826,8.41510662 L11.47855,3.81866389 C11.7986624,3.62303967 12.2013376,3.62303967 12.52145,3.81866389 L20.0429,8.41510557 C20.6374094,8.77841684 21,9.42493654 21,10.1216692 L21,19.0000642 C21,20.1046337 20.1045695,21.0000642 19,21.0000642 L4.99998155,21.0000673 C3.89541205,21.0000673 2.99998155,20.1046368 2.99998155,19.0000673 C2.99998155,19.0000663 2.99998155,19.0000652 2.99998155,19.0000642 L2.99999828,10.1216672 C2.99999935,9.42493561 3.36258984,8.77841732 3.95709826,8.41510662 Z" fill="#000000" opacity="0.3" />
+                                                    <path d="M13.8,12 C13.1562,12 12.4033,12.7298529 12,13.2 C11.5967,12.7298529 10.8438,12 10.2,12 C9.0604,12 8.4,12.8888719 8.4,14.0201635 C8.4,15.2733878 9.6,16.6 12,18 C14.4,16.6 15.6,15.3 15.6,14.1 C15.6,12.9687084 14.9396,12 13.8,12 Z" fill="#000000" opacity="0.3" />
+                                                </g>
+                                            </svg><!--end::Svg Icon-->
+                                        </span>
+                                        <span class="menu-text">الرئيسية </span>
+                                    </a>
+                                </li>
+
+                                <li class="menu-item menu-item" aria-haspopup="true">
+                                    <a href="~/User/Index" class="menu-link">
+                                        <span class="svg-icon svg-icon-primary svg-icon-2x">
+                                            <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo1/dist/../src/media/svg/icons/Files/User-folder.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                    <rect x="0" y="0" width="24" height="24" />
+                                                    <path d="M3.5,21 L20.5,21 C21.3284271,21 22,20.3284271 22,19.5 L22,8.5 C22,7.67157288 21.3284271,7 20.5,7 L10,7 L7.43933983,4.43933983 C7.15803526,4.15803526 6.77650439,4 6.37867966,4 L3.5,4 C2.67157288,4 2,4.67157288 2,5.5 L2,19.5 C2,20.3284271 2.67157288,21 3.5,21 Z" fill="#000000" opacity="0.3" />
+                                                    <path d="M12,13 C10.8954305,13 10,12.1045695 10,11 C10,9.8954305 10.8954305,9 12,9 C13.1045695,9 14,9.8954305 14,11 C14,12.1045695 13.1045695,13 12,13 Z" fill="#000000" opacity="0.3" />
+                                                    <path d="M7.00036205,18.4995035 C7.21569918,15.5165724 9.36772908,14 11.9907452,14 C14.6506758,14 16.8360465,15.4332455 16.9988413,18.5 C17.0053266,18.6221713 16.9988413,19 16.5815,19 C14.5228466,19 11.463736,19 7.4041679,19 C7.26484009,19 6.98863236,18.6619875 7.00036205,18.4995035 Z" fill="#000000" opacity="0.3" />
+                                                </g>
+                                            </svg><!--end::Svg Icon-->
+                                        </span>
+                                        <span class="menu-text"> ادارة المستخدمين </span>
+                                    </a>
+                                </li>
+
+                                <li class="menu-item menu-item" aria-haspopup="true">
+                                    <a href="~/Category/Index" class="menu-link">
+                                        <span class="svg-icon svg-icon-primary svg-icon-2x">
+                                            <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo1/dist/../src/media/svg/icons/General/Duplicate.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                    <rect x="0" y="0" width="24" height="24" />
+                                                    <path d="M15.9956071,6 L9,6 C7.34314575,6 6,7.34314575 6,9 L6,15.9956071 C4.70185442,15.9316381 4,15.1706419 4,13.8181818 L4,6.18181818 C4,4.76751186 4.76751186,4 6.18181818,4 L13.8181818,4 C15.1706419,4 15.9316381,4.70185442 15.9956071,6 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
+                                                    <path d="M10.1818182,8 L17.8181818,8 C19.2324881,8 20,8.76751186 20,10.1818182 L20,17.8181818 C20,19.2324881 19.2324881,20 17.8181818,20 L10.1818182,20 C8.76751186,20 8,19.2324881 8,17.8181818 L8,10.1818182 C8,8.76751186 8.76751186,8 10.1818182,8 Z" fill="#000000" />
+                                                </g>
+                                            </svg><!--end::Svg Icon-->
+                                        </span>
+                                        <span class="menu-text"> ادارة التصنيفات </span>
+                                    </a>
+                                </li>
+                                <li class="menu-item menu-item" aria-haspopup="true">
+                                    <a href="~/Post/Index" class="menu-link">
+                                        <span class="svg-icon svg-icon-primary svg-icon-2x">
+                                            <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo1/dist/../src/media/svg/icons/Communication/Write.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                    <rect x="0" y="0" width="24" height="24" />
+                                                    <path d="M12.2674799,18.2323597 L12.0084872,5.45852451 C12.0004303,5.06114792 12.1504154,4.6768183 12.4255037,4.38993949 L15.0030167,1.70195304 L17.5910752,4.40093695 C17.8599071,4.6812911 18.0095067,5.05499603 18.0083938,5.44341307 L17.9718262,18.2062508 C17.9694575,19.0329966 17.2985816,19.701953 16.4718324,19.701953 L13.7671717,19.701953 C12.9505952,19.701953 12.2840328,19.0487684 12.2674799,18.2323597 Z" fill="#000000" fill-rule="nonzero" transform="translate(14.701953, 10.701953) rotate(-135.000000) translate(-14.701953, -10.701953) " />
+                                                    <path d="M12.9,2 C13.4522847,2 13.9,2.44771525 13.9,3 C13.9,3.55228475 13.4522847,4 12.9,4 L6,4 C4.8954305,4 4,4.8954305 4,6 L4,18 C4,19.1045695 4.8954305,20 6,20 L18,20 C19.1045695,20 20,19.1045695 20,18 L20,13 C20,12.4477153 20.4477153,12 21,12 C21.5522847,12 22,12.4477153 22,13 L22,18 C22,20.209139 20.209139,22 18,22 L6,22 C3.790861,22 2,20.209139 2,18 L2,6 C2,3.790861 3.790861,2 6,2 L12.9,2 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
+                                                </g>
+                                            </svg><!--end::Svg Icon-->
+                                        </span>
+                                        <span class="menu-text"> ادارة الاخبار </span>
+                                    </a>
+                                </li>
+                                <li class="menu-item menu-item" aria-haspopup="true">
+                                    <a href="~/Track/Index" class="menu-link">
+                                        <span class="svg-icon svg-icon-primary svg-icon-2x">
+                                            <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo1/dist/../src/media/svg/icons/Media/Music-cloud.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                    <rect x="0" y="0" width="24" height="24" />
+                                                    <path d="M14.9297424,9 L18,9 C21.3137085,9 24,11.6862915 24,15 C24,18.3137085 21.3137085,21 18,21 L9,21 C8.84387716,21 8.68914702,20.9940371 8.53602492,20.9823266 C8.35886438,20.9940469 8.18012741,21 8,21 C3.581722,21 0,17.418278 0,13 C0,8.581722 3.581722,5 8,5 C10.9611294,5 13.5465048,6.60879452 14.9297424,9 Z" fill="#000000" opacity="0.3" />
+                                                    <path d="M10.5833333,18.5 C9.70888248,18.5 9,17.8919916 9,17.1419753 C9,16.391959 9.70888248,15.7839506 10.5833333,15.7839506 C10.7683909,15.7839506 10.9460333,15.8111809 11.1111111,15.8612248 L11.1111111,12.0925343 C11.1111111,11.8139918 11.2798844,11.5677693 11.5277603,11.484687 L14.5624826,10.5294328 C14.9448163,10.4012833 15.3333333,10.7076449 15.3333333,11.1372801 L15.3333333,12.0925343 C15.3333333,12.4109524 15.0436696,12.6143119 14.8055556,12.6728395 C14.4629575,12.7570489 13.5833278,12.9381188 12.1666667,13.2160494 L12.1666667,17.1697968 C12.1666667,17.2185655 12.1628241,17.2637188 12.1553303,17.3053217 C12.0612659,17.9783191 11.3933298,18.5 10.5833333,18.5 Z" fill="#000000" />
+                                                </g>
+                                            </svg><!--end::Svg Icon-->
+                                        </span>
+                                        <span class="menu-text"> ادارة التسجيلات </span>
+                                    </a>
+                                </li>
+                                <li class="menu-item menu-item" aria-haspopup="true">
+                                    <a href="~/Advertisement/Index" class="menu-link">
+                                        <span class="svg-icon svg-icon-primary svg-icon-2x">
+                                            <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo1/dist/../src/media/svg/icons/Design/Layers.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                    <polygon points="0 0 24 0 24 24 0 24" />
+                                                    <path d="M12.9336061,16.072447 L19.36,10.9564761 L19.5181585,10.8312381 C20.1676248,10.3169571 20.2772143,9.3735535 19.7629333,8.72408713 C19.6917232,8.63415859 19.6104327,8.55269514 19.5206557,8.48129411 L12.9336854,3.24257445 C12.3871201,2.80788259 11.6128799,2.80788259 11.0663146,3.24257445 L4.47482784,8.48488609 C3.82645598,9.00054628 3.71887192,9.94418071 4.23453211,10.5925526 C4.30500305,10.6811601 4.38527899,10.7615046 4.47382636,10.8320511 L4.63,10.9564761 L11.0659024,16.0730648 C11.6126744,16.5077525 12.3871218,16.5074963 12.9336061,16.072447 Z" fill="#000000" fill-rule="nonzero" />
+                                                    <path d="M11.0563554,18.6706981 L5.33593024,14.122919 C4.94553994,13.8125559 4.37746707,13.8774308 4.06710397,14.2678211 C4.06471678,14.2708238 4.06234874,14.2738418 4.06,14.2768747 L4.06,14.2768747 C3.75257288,14.6738539 3.82516916,15.244888 4.22214834,15.5523151 C4.22358765,15.5534297 4.2250303,15.55454 4.22647627,15.555646 L11.0872776,20.8031356 C11.6250734,21.2144692 12.371757,21.2145375 12.909628,20.8033023 L19.7677785,15.559828 C20.1693192,15.2528257 20.2459576,14.6784381 19.9389553,14.2768974 C19.9376429,14.2751809 19.9363245,14.2734691 19.935,14.2717619 L19.935,14.2717619 C19.6266937,13.8743807 19.0546209,13.8021712 18.6572397,14.1104775 C18.654352,14.112718 18.6514778,14.1149757 18.6486172,14.1172508 L12.9235044,18.6705218 C12.377022,19.1051477 11.6029199,19.1052208 11.0563554,18.6706981 Z" fill="#000000" opacity="0.3" />
+                                                </g>
+                                            </svg><!--end::Svg Icon-->
+                                        </span>
+                                        <span class="menu-text"> ادارة الاعلانات </span>
+                                    </a>
+                                </li>
+                            }
+                            else if (ViewBag.UserType == "ArticleAuthor")
+                            {
+
+
+
+
+                                <li class="menu-item menu-item" aria-haspopup="true">
+                                    <a href="~/Category/Index" class="menu-link">
+                                        <span class="svg-icon svg-icon-primary svg-icon-2x">
+                                            <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo1/dist/../src/media/svg/icons/General/Duplicate.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                    <rect x="0" y="0" width="24" height="24" />
+                                                    <path d="M15.9956071,6 L9,6 C7.34314575,6 6,7.34314575 6,9 L6,15.9956071 C4.70185442,15.9316381 4,15.1706419 4,13.8181818 L4,6.18181818 C4,4.76751186 4.76751186,4 6.18181818,4 L13.8181818,4 C15.1706419,4 15.9316381,4.70185442 15.9956071,6 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
+                                                    <path d="M10.1818182,8 L17.8181818,8 C19.2324881,8 20,8.76751186 20,10.1818182 L20,17.8181818 C20,19.2324881 19.2324881,20 17.8181818,20 L10.1818182,20 C8.76751186,20 8,19.2324881 8,17.8181818 L8,10.1818182 C8,8.76751186 8.76751186,8 10.1818182,8 Z" fill="#000000" />
+                                                </g>
+                                            </svg><!--end::Svg Icon-->
+                                        </span>
+                                        <span class="menu-text"> ادارة التصنيفات </span>
+                                    </a>
+                                </li>
+                                <li class="menu-item menu-item" aria-haspopup="true">
+                                    <a href="~/Post/Index" class="menu-link">
+                                        <span class="svg-icon svg-icon-primary svg-icon-2x">
+                                            <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo1/dist/../src/media/svg/icons/Communication/Write.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                    <rect x="0" y="0" width="24" height="24" />
+                                                    <path d="M12.2674799,18.2323597 L12.0084872,5.45852451 C12.0004303,5.06114792 12.1504154,4.6768183 12.4255037,4.38993949 L15.0030167,1.70195304 L17.5910752,4.40093695 C17.8599071,4.6812911 18.0095067,5.05499603 18.0083938,5.44341307 L17.9718262,18.2062508 C17.9694575,19.0329966 17.2985816,19.701953 16.4718324,19.701953 L13.7671717,19.701953 C12.9505952,19.701953 12.2840328,19.0487684 12.2674799,18.2323597 Z" fill="#000000" fill-rule="nonzero" transform="translate(14.701953, 10.701953) rotate(-135.000000) translate(-14.701953, -10.701953) " />
+                                                    <path d="M12.9,2 C13.4522847,2 13.9,2.44771525 13.9,3 C13.9,3.55228475 13.4522847,4 12.9,4 L6,4 C4.8954305,4 4,4.8954305 4,6 L4,18 C4,19.1045695 4.8954305,20 6,20 L18,20 C19.1045695,20 20,19.1045695 20,18 L20,13 C20,12.4477153 20.4477153,12 21,12 C21.5522847,12 22,12.4477153 22,13 L22,18 C22,20.209139 20.209139,22 18,22 L6,22 C3.790861,22 2,20.209139 2,18 L2,6 C2,3.790861 3.790861,2 6,2 L12.9,2 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
+                                                </g>
+                                            </svg><!--end::Svg Icon-->
+                                        </span>
+                                        <span class="menu-text"> ادارة الاخبار </span>
+                                    </a>
+                                </li>
+
+
+                            }
+                            else if (ViewBag.UserType == "TrackAdministrator")
+                            {
+
+
+
+
+                                <li class="menu-item menu-item" aria-haspopup="true">
+                                    <a href="~/Category/Index" class="menu-link">
+                                        <span class="svg-icon svg-icon-primary svg-icon-2x">
+                                            <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo1/dist/../src/media/svg/icons/General/Duplicate.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                    <rect x="0" y="0" width="24" height="24" />
+                                                    <path d="M15.9956071,6 L9,6 C7.34314575,6 6,7.34314575 6,9 L6,15.9956071 C4.70185442,15.9316381 4,15.1706419 4,13.8181818 L4,6.18181818 C4,4.76751186 4.76751186,4 6.18181818,4 L13.8181818,4 C15.1706419,4 15.9316381,4.70185442 15.9956071,6 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
+                                                    <path d="M10.1818182,8 L17.8181818,8 C19.2324881,8 20,8.76751186 20,10.1818182 L20,17.8181818 C20,19.2324881 19.2324881,20 17.8181818,20 L10.1818182,20 C8.76751186,20 8,19.2324881 8,17.8181818 L8,10.1818182 C8,8.76751186 8.76751186,8 10.1818182,8 Z" fill="#000000" />
+                                                </g>
+                                            </svg><!--end::Svg Icon-->
+                                        </span>
+                                        <span class="menu-text"> ادارة التصنيفات </span>
+                                    </a>
+                                </li>
+                                <li class="menu-item menu-item" aria-haspopup="true">
+                                    <a href="~/Track/Index" class="menu-link">
+                                        <span class="svg-icon svg-icon-primary svg-icon-2x">
+                                            <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo1/dist/../src/media/svg/icons/Media/Music-cloud.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                    <rect x="0" y="0" width="24" height="24" />
+                                                    <path d="M14.9297424,9 L18,9 C21.3137085,9 24,11.6862915 24,15 C24,18.3137085 21.3137085,21 18,21 L9,21 C8.84387716,21 8.68914702,20.9940371 8.53602492,20.9823266 C8.35886438,20.9940469 8.18012741,21 8,21 C3.581722,21 0,17.418278 0,13 C0,8.581722 3.581722,5 8,5 C10.9611294,5 13.5465048,6.60879452 14.9297424,9 Z" fill="#000000" opacity="0.3" />
+                                                    <path d="M10.5833333,18.5 C9.70888248,18.5 9,17.8919916 9,17.1419753 C9,16.391959 9.70888248,15.7839506 10.5833333,15.7839506 C10.7683909,15.7839506 10.9460333,15.8111809 11.1111111,15.8612248 L11.1111111,12.0925343 C11.1111111,11.8139918 11.2798844,11.5677693 11.5277603,11.484687 L14.5624826,10.5294328 C14.9448163,10.4012833 15.3333333,10.7076449 15.3333333,11.1372801 L15.3333333,12.0925343 C15.3333333,12.4109524 15.0436696,12.6143119 14.8055556,12.6728395 C14.4629575,12.7570489 13.5833278,12.9381188 12.1666667,13.2160494 L12.1666667,17.1697968 C12.1666667,17.2185655 12.1628241,17.2637188 12.1553303,17.3053217 C12.0612659,17.9783191 11.3933298,18.5 10.5833333,18.5 Z" fill="#000000" />
+                                                </g>
+                                            </svg><!--end::Svg Icon-->
+                                        </span>
+                                        <span class="menu-text"> ادارة التسجيلات </span>
+                                    </a>
+                                </li>
+
+
+                            }
+
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+            <div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
+                <div id="kt_header" class="header header-fixed">
+                    <div class="container-fluid d-flex align-items-stretch justify-content-between">
+                        <div class="header-menu-wrapper header-menu-wrapper-left" id="kt_header_menu_wrapper">
+                            <div id="kt_header_menu" class="header-menu header-menu-mobile header-menu-layout-default">
+                            </div>
+                        </div>
+                        <div class="topbar">
+                            <div class="topbar-item">
+                                <div class="btn btn-icon btn-icon-mobile w-auto btn-clean d-flex align-items-center btn-lg px-2" id="kt_quick_user_toggle">
+                                    <span class="text-muted font-weight-bold font-size-base d-none d-md-inline mr-1">أهلا بك يا,</span>
+                                    <span class="text-dark-50 font-weight-bolder font-size-base d-none d-md-inline mr-3"> @ViewBag.fullName</span>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+
+                    <div class="d-flex flex-column-fluid">
+                        <div class="container">
+                            @RenderBody()
+                        </div>
+                    </div>
+                </div>
+                <div class="footer bg-white py-4 d-flex flex-lg-column" id="kt_footer">
+                    <div class="container-fluid d-flex flex-column flex-md-row align-items-center justify-content-between">
+                        <div class="text-dark order-2 order-md-1">
+                            <span class="text-muted font-weight-bold mr-2">@DateTime.Now.Year©</span>
+                            <a href="" target="_blank" class="text-dark-75 text-hover-primary">HMS</a>
+                        </div>
+                        <div class="nav nav-dark">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- begin::User Panel-->
+    <div id="kt_quick_user" class="offcanvas offcanvas-right p-10">
+        <!--begin::Header-->
+        <div class="offcanvas-header d-flex align-items-center justify-content-between pb-5">
+            <h3 class="font-weight-bold m-0">
+                معلومات المستخدم
+            </h3>
+            <a class="btn btn-xs btn-icon btn-light btn-hover-primary" id="kt_quick_user_close">
+                <i class="ki ki-close icon-xs text-muted"></i>
+            </a>
+        </div>
+        <!--end::Header-->
+        <!--begin::Content-->
+        <div class="offcanvas-content pr-5 mr-n5">
+            <!--begin::Header-->
+            <div class="d-flex align-items-center mt-5">
+                <div class="symbol symbol-100 mr-5">
+                    <div class="symbol-label" style="background-image: url('/images/@ViewBag.image')"></div>
+                    <i class="symbol-badge bg-success"></i>
+                </div>
+                <div class="d-flex flex-column">
+                    <a href="#" class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary">@ViewBag.FullName</a>
+                    <div class="text-muted mt-1">@ViewBag.UserType</div>
+                    <div class="navi mt-2">
+                        <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="/Identity/Account/Login" )">
+                            <button type="submit" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">تسجيل الخروج</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!--end::Header-->
+        </div>
+        <!--end::Content-->
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - HMS.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <!-- end::User Panel-->
+    <!--begin::Modal-->
+    <div class="modal fade" data-toggle="PopUp" data-target="modal" id="PopUp" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Select2 Examples</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="ki ki-close"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                </div>
+            </div>
         </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+    </div>
+
+    <div class="modal fade" id="Confirm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLabel">تحذير !</h3>
+                </div>
+                <div class="modal-body">
+                    <p style="font-size: 18px">هل انت متاكد من العملية ؟</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">الغاء</button>
+                    <button type="submit" id="Confirm" class="btn btn-danger">نعم</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--end::Modal-->
+    <script>var KTAppSettings = { "breakpoints": { "sm": 576, "md": 768, "lg": 992, "xl": 1200, "xxl": 1400 }, "colors": { "theme": { "base": { "white": "#ffffff", "primary": "#3699FF", "secondary": "#E5EAEE", "success": "#1BC5BD", "info": "#8950FC", "warning": "#FFA800", "danger": "#F64E60", "light": "#E4E6EF", "dark": "#181C32" }, "light": { "white": "#ffffff", "primary": "#E1F0FF", "secondary": "#EBEDF3", "success": "#C9F7F5", "info": "#EEE5FF", "warning": "#FFF4DE", "danger": "#FFE2E5", "light": "#F3F6F9", "dark": "#D6D6E0" }, "inverse": { "white": "#ffffff", "primary": "#ffffff", "secondary": "#3F4254", "success": "#ffffff", "info": "#ffffff", "warning": "#ffffff", "danger": "#ffffff", "light": "#464E5F", "dark": "#ffffff" } }, "gray": { "gray-100": "#F3F6F9", "gray-200": "#EBEDF3", "gray-300": "#E4E6EF", "gray-400": "#D1D3E0", "gray-500": "#B5B5C3", "gray-600": "#7E8299", "gray-700": "#5E6278", "gray-800": "#3F4254", "gray-900": "#181C32" } }, "font-family": "Poppins" };</script>
+    <script src="~/assets/plugins/global/plugins.bundle.js"></script>
+    <script src="~/assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
+    <script src="~/assets/js/vendors.bundle.js" type="text/javascript"></script>
+    <script src="~/nprogress-master/nprogress.js"></script>
+    <script src="~/assets/js/scripts.bundle.js"></script>
+    <script src="~/assets/js/MainLayout.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
+    <script>
+        const permissions = {
+            0: { 'name': 'Dashboard' },
+            1: { 'name': 'Supervisor' },
+            2: { 'name': 'Role' },
+        };
+    </script>
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

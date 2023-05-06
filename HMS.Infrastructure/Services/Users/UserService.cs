@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using HMS.Core.Constants;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using Query = HMS.Core.Dtos.Query;
 
 namespace HMS.Infrastructure.Services.Users
 {
@@ -30,14 +31,35 @@ namespace HMS.Infrastructure.Services.Users
             _emailService = emailService;
         }
 
-        public  List<UserViewModel> GetAll()
+        public List<User> GetAllData()
         {
-            var dataList =  _db.Users.Where(x => !x.IsDelete).ToList();
-            var users = _mapper.Map<List<UserViewModel>>(dataList);
+            var users = _db.Users.ToList();
 
             return users;
-        }
 
+        }
+        public async Task<ResponseDto> GetAll(Pagination pagination, Query query)
+        {
+            var queryString = _db.Users.Where(x => !x.IsDelete && (x.FullName.Contains(query.GeneralSearch) || string.IsNullOrWhiteSpace(query.GeneralSearch) || x.Email.Contains(query.GeneralSearch) || x.PhoneNumber.Contains(query.GeneralSearch))).AsQueryable();
+
+            var dataCount = queryString.Count();
+            var skipValue = pagination.GetSkipValue();
+            var dataList = await queryString.Skip(skipValue).Take(pagination.PerPage).ToListAsync();
+            var users = _mapper.Map<List<UserViewModel>>(dataList);
+            var pages = pagination.GetPages(dataCount);
+            var result = new ResponseDto
+            {
+                data = users,
+                meta = new Meta
+                {
+                    page = pagination.Page,
+                    perpage = pagination.PerPage,
+                    pages = pages,
+                    total = dataCount,
+                }
+            };
+            return result;
+        }
         public  UserViewModel GetUserByUsername(string username)
         {
             var user =  _db.Users.SingleOrDefault(x => x.UserName == username && !x.IsDelete);

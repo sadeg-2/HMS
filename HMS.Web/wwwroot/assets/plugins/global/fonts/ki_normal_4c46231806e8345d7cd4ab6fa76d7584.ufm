@@ -1,0 +1,92 @@
+StartFontMetrics 4.1
+Notice Converted by PHP-font-lib
+Comment https://github.com/PhenX/php-font-lib
+EncodingScheme FontSpecific
+Copyright 
+FontName Flaticon
+FontSubfamily Regular
+UniqueID FontForge 2.0 : Flaticon : 3-8-2020
+FullName Flaticon
+Version Version 001.000 
+PostScriptName Flaticon
+Weight Medium
+ItalicAngle 0
+IsFixedPitch false
+UnderlineThickness 49
+UnderlinePosition -125
+FontHeightOffset 90
+Ascender 885
+Descender -135
+FontBBox -12 -135 1012 885
+StartCharMetrics 72
+U 32 ; WX 391 ; N space ; G 3
+U 61696 ; WX 1000 ; N 001-double-arrow-next ; G 4
+U 61697 ; WX 1000 ; N 002-double-arrow-back ; G 5
+U 61698 ; WX 1000 ; N 003-double-arrow-down ; G 6
+U 61699 ; WX 1000 ; N 004-double-arrow-up ; G 7
+U 61700 ; WX 1000 ; N 005-long-arrow-back ; G 8
+U 61701 ; WX 1000 ; N 006-arrow-next ; G 9
+U 61702 ; WX 1000 ; N 007-arrow-back ; G 10
+U 61703 ; WX 1000 ; N 008-long-arrow-next ; G 11
+U 61704 ; WX 1000 ; N 009-check ; G 12
+U 61705 ; WX 1000 ; N 010-arrow-down ; G 13
+U 61706 ; WX 1000 ; N 011-minus ; G 14
+U 61707 ; WX 1000 ; N 012-long-arrow-down ; G 15
+U 61708 ; WX 1000 ; N 013-long-arrow-up ; G 16
+U 61709 ; WX 1000 ; N 014-plus ; G 17
+U 61710 ; WX 1000 ; N 015-arrow-up ; G 18
+U 61711 ; WX 1000 ; N 016-round ; G 19
+U 61712 ; WX 1000 ; N 017-reload ; G 20
+U 61713 ; WX 1000 ; N 018-refresh ; G 21
+U 61714 ; WX 1000 ; N 019-solid-plus ; G 22
+U 61715 ; WX 1000 ; N 020-bold-close ; G 23
+U 61716 ; WX 1000 ; N 021-solid-minus ; G 24
+U 61717 ; WX 1000 ; N 022-hide ; G 25
+U 61718 ; WX 1000 ; N 023-code ; G 26
+U 61719 ; WX 1000 ; N 024-copy ; G 27
+U 61720 ; WX 1000 ; N 025-up-and-down ; G 28
+U 61721 ; WX 1000 ; N 026-left-and-right ; G 29
+U 61722 ; WX 1000 ; N 027-bold-triangle-bottom ; G 30
+U 61723 ; WX 1000 ; N 028-bold-triangle-right ; G 31
+U 61724 ; WX 1000 ; N 029-bold-triangle-top ; G 32
+U 61725 ; WX 1000 ; N 030-bold-triangle-left ; G 33
+U 61726 ; WX 1000 ; N 031-bold-double-arrow-up ; G 34
+U 61727 ; WX 1000 ; N 032-bold-double-arrow-next ; G 35
+U 61728 ; WX 1000 ; N 033-bold-double-arrow-back ; G 36
+U 61729 ; WX 1000 ; N 034-bold-double-arrow-down ; G 37
+U 61730 ; WX 1000 ; N 035-bold-arrow-down ; G 38
+U 61731 ; WX 1000 ; N 036-bold-arrow-next ; G 39
+U 61732 ; WX 1000 ; N 037-bold-arrow-back ; G 40
+U 61733 ; WX 1000 ; N 038-bold-arrow-up ; G 41
+U 61734 ; WX 1000 ; N 039-bold-check ; G 42
+U 61735 ; WX 1000 ; N 040-bold-wide-arrow-down ; G 43
+U 61736 ; WX 1000 ; N 041-bold-wide-arrow-up ; G 44
+U 61737 ; WX 1000 ; N 042-bold-wide-arrow-next ; G 45
+U 61738 ; WX 1000 ; N 043-bold-wide-arrow-back ; G 46
+U 61739 ; WX 1000 ; N 044-bold-long-arrow-up ; G 47
+U 61740 ; WX 1000 ; N 045-bold-long-arrow-down ; G 48
+U 61741 ; WX 1000 ; N 046-bold-long-arrow-back ; G 49
+U 61742 ; WX 1000 ; N 047-bold-long-arrow-next ; G 50
+U 61743 ; WX 1000 ; N 048-bold-check-1 ; G 51
+U 61744 ; WX 1000 ; N 049-close ; G 52
+U 61745 ; WX 998 ; N 050-more-ver ; G 53
+U 61746 ; WX 1000 ; N 051-bold-more-ver ; G 54
+U 61747 ; WX 1000 ; N 052-more-hor ; G 55
+U 61748 ; WX 1000 ; N 053-bold-more-hor ; G 56
+U 61749 ; WX 1000 ; N 054-bold-menu ; G 57
+U 61750 ; WX 1000 ; N 055-drag ; G 58
+U 61751 ; WX 1000 ; N 056-bold-sort ; G 59
+U 61752 ; WX 1000 ; N 057-eye ; G 60
+U 61753 ; WX 1000 ; N 058-outline-info ; G 61
+U 61754 ; WX 1000 ; N 059-menu ; G 62
+U 61755 ; WX 1000 ; N 060-menu-grid ; G 63
+U 61756 ; WX 1000 ; N 061-wrench ; G 64
+U 61757 ; WX 1000 ; N 062-gear ; G 65
+U 61758 ; WX 1000 ; N 063-info ; G 66
+U 61759 ; WX 1000 ; N 064-calendar-2 ; G 67
+U 61760 ; WX 1000 ; N 065-calendar ; G 68
+U 61761 ; WX 1000 ; N 066-calendar-today ; G 69
+U 61762 ; WX 1000 ; N 067-clock ; G 70
+U 61763 ; WX 1000 ; N 068-068-more-1-2 ; G 71
+EndCharMetrics
+EndFontMetrics

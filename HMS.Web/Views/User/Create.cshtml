@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "اضافة مستخدم جديد";
+    Layout = null;
 }
 
 <form asp-action="Create" class="ajaxForm" tname="#kt_datatable" enctype="multipart/form-data">
@@ -30,7 +31,6 @@
         </div>
     </div>
     <div class="row">
-
         <div class="col-md-4">
             <div class="form-group">
                 <label asp-for="DOB" class="control-label"></label>
@@ -38,14 +38,13 @@
                 <span asp-validation-for="DOB" class="text-danger"></span>
             </div>
         </div>
-
         <div class="col-md-4">
             <div class="form-group">
                 <label asp-for="UserType" class="control-label"></label>
                 <select asp-for="UserType" class="form-control">
-                    <option value="@UserType.Patient">مريض</option>
-                    <option value="@UserType.Nurse">ممرض</option>
-                    <option value="@UserType.Doctor">طبيب  </option>
+                    <option value="@UserType.Administrator">مدير</option>
+                    <option value="@UserType.Patient">محرر</option>
+                    <option value="@UserType.Doctor">مسؤول التسجيلات </option>
                 </select>
                 <span asp-validation-for="UserType" class="text-danger"></span>
             </div>
@@ -61,7 +60,7 @@
 
     <div class="form-group">
         <input type="submit" value="اضافة" class="btn btn-primary" />
-        <a  data-dismiss="modal" aria-label="Close" class="btn btn-danger">الغاء</a>
+        <a data-dismiss="modal" aria-label="Close" class="btn btn-danger">الغاء</a>
     </div>
 </form>
 
