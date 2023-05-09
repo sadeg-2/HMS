@@ -2,22 +2,24 @@
 
 namespace HMS.Data.Models
 {
-    public class patient
+    public class Patient : BaseEntity
     {
         public int Id { get; set; }
 
-        public nurse nurses { get; set; }
+        public bool HasNurse { get; set; }
 
-        public string userId { get; set; }
-        public User user { get; set; }
+        public Nurse Nurse { get; set; }
 
-        public List<treatment> treatments { get; set; }
+        public string UserId { get; set; }
+        public User User { get; set; }
 
-        public List<schidule> schidules { get; set; }
+        public List<Treatment> Treatments { get; set; }
 
-        public List<patientSchdule> patientSchdules { get; set; }
+        public List<Schidule> Schidules { get; set; }
 
-        public List<patientTreatment> patientTreatment { get; set; }
+        public List<PatientSchdule> PatientSchdules { get; set; }
+
+        public List<PatientTreatment> PatientTreatment { get; set; }
 
     }
 }

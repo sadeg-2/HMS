@@ -25,11 +25,11 @@ namespace HMS.Data.Models
         public string? CreatedBy { get; set; }
         public string? UpdatedBy { get; set; }
 
-        public nurse nurse { get; set; }
+        public Nurse Nurse { get; set; }
+        
+        public Patient Patient { get; set; }
 
-        public patient patient { get; set; }
-
-        public doctor doctor { get; set; }
+        public Doctor Doctor { get; set; }
 
         public User() {
             CreatedBy = "Me";

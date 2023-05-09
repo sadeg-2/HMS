@@ -1,10 +1,10 @@
 ﻿namespace HMS.Data.Models
 {
-    public class patientSchdule
+    public class PatientSchdule
     {
-        public int patientId { get; set; }
-        public patient patient { get; set; }
-        public int schiduleId { get; set; }
-        public schidule Schidule { get; set; }
+        public int PatientId { get; set; }
+        public Patient Patient { get; set; }
+        public int SchiduleId { get; set; }
+        public Schidule Schidule { get; set; }
     }
 }

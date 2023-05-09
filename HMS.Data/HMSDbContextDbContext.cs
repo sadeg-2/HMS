@@ -14,63 +14,46 @@ namespace HMS.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<patient>()
-                .HasMany(x => x.schidules)
-                .WithMany(x => x.patients)
-                .UsingEntity<patientSchdule>(
-                    x => x.HasOne(x => x.Schidule).WithMany(x => x.patientSchdules).HasForeignKey(x => x.schiduleId),
-                    x => x.HasOne(x => x.patient).WithMany(x => x.patientSchdules).HasForeignKey(x => x.patientId),
-                    x => x.HasKey(x => new { x.patientId, x.schiduleId })
+            modelBuilder.Entity<Patient>()
+                .HasMany(x => x.Schidules)
+                .WithMany(x => x.Patients)
+                .UsingEntity<PatientSchdule>(
+                    x => x.HasOne(x => x.Schidule).WithMany(x => x.PatientSchdules).HasForeignKey(x => x.SchiduleId),
+                    x => x.HasOne(x => x.Patient).WithMany(x => x.PatientSchdules).HasForeignKey(x => x.PatientId),
+                    x => x.HasKey(x => new { x.PatientId, x.SchiduleId })
                 );
-            modelBuilder.Entity<patient>()
-                .HasMany(x => x.treatments)
-                .WithMany(x => x.patient)
-                .UsingEntity<patientTreatment>(
-                    x => x.HasOne(x => x.Treatment).WithMany(x => x.patientTreatment).HasForeignKey(x => x.treatmentId),
-                    x => x.HasOne(x => x.patient).WithMany(x => x.patientTreatment).HasForeignKey(x => x.patientId),
-                    x => x.HasKey(x => new { x.patientId, x.treatmentId })
+            modelBuilder.Entity<Patient>()
+                .HasMany(x => x.Treatments)
+                .WithMany(x => x.Patient)
+                .UsingEntity<PatientTreatment>(
+                    x => x.HasOne(x => x.Treatment).WithMany(x => x.PatientTreatment).HasForeignKey(x => x.TreatmentId),
+                    x => x.HasOne(x => x.Patient).WithMany(x => x.PatientTreatment).HasForeignKey(x => x.PatientId),
+                    x => x.HasKey(x => new { x.PatientId, x.TreatmentId })
                 );
-            modelBuilder.Entity<nurse>()
-                .HasMany(x => x.schidules)
-                .WithMany(x => x.nurses)
-                .UsingEntity<nurseSchidule>(
-                    x => x.HasOne(x => x.Schidule).WithMany(x => x.nurseSchidules).HasForeignKey(x => x.schiduleId),
-                    x => x.HasOne(x => x.nurse).WithMany(x => x.nurseSchidules).HasForeignKey(x => x.nurseId),
-                    x => x.HasKey(x => new { x.schiduleId, x.nurseId })
-                );
-
-            modelBuilder.Entity<doctor>()
-                .HasMany(x => x.schidules)
-                .WithMany(x => x.doctors)
-                .UsingEntity<doctorSchidule>(
-                    x => x.HasOne(x => x.Schidule).WithMany(x => x.doctorSchidule).HasForeignKey(x => x.schiduleId),
-                    x => x.HasOne(x => x.doctor).WithMany(x => x.doctorSchidules).HasForeignKey(x => x.doctortId),
-                    x => x.HasKey(x => new { x.schiduleId, x.doctortId })
-                );
+           
+            
             //modelBuilder.Entity<User>()
             //    .HasOne(u => u.doctor)
             //    .WithOne(d => d.user)
             //    .HasForeignKey<doctor>(d => d.userId);
             //modelBuilder.Entity<User>()
-            //    .HasOne(u => u.nurse)
+            //    .HasOne(u => u.Nurse)
             //    .WithOne(n => n.user)
-            //    .HasForeignKey<nurse>(n => n.userId);
+            //    .HasForeignKey<Nurse>(n => n.userId);
             //modelBuilder.Entity<User>()
-            //    .HasOne(u => u.patient)
+            //    .HasOne(u => u.Patient)
             //    .WithOne(p => p.user)
-            //    .HasForeignKey<patient>(p => p.userId);
+            //    .HasForeignKey<Patient>(p => p.userId);
 
         }
 
-        public DbSet<patient> patients { get; set; }
-        public DbSet<User> users { get; set; }
-        public DbSet<schidule> schidules { get; set; }
-        public DbSet<treatment> treatments { get; set; }
-        public DbSet<patientSchdule> patientSchdules { get; set; }
-        public DbSet<patientTreatment> patientTreatments { get; set; }
-        public DbSet<nurse> nurses { get; set; }
-        public DbSet<nurseSchidule> nurseSchidules { get; set; }
-        public DbSet<doctor> doctors { get; set; }
-        public DbSet<doctorSchidule> doctorSchidules { get; set; }
+        public DbSet<Patient> Patients { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Schidule> Schidules { get; set; }
+        public DbSet<Treatment> Treatments { get; set; }
+        public DbSet<PatientSchdule> PatientSchdules { get; set; }
+        public DbSet<PatientTreatment> PatientTreatments { get; set; }
+        public DbSet<Nurse> Nurses { get; set; }
+        public DbSet<Doctor> Doctors { get; set; }
     }
 }
