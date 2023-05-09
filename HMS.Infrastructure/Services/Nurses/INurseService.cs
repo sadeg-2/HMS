@@ -10,9 +10,9 @@ namespace HMS.Infrastructure.Services.Nurses
     public interface  INurseService 
     {
         Task<ResponseDto> GetAll(Pagination pagination, Query query);
-        Task<string> Create(CreateNurseDto dto);
-        Task<string> Update(UpdateNurseDto dto);
-        Task<string> Delete(string Id);
-        Task<UpdateNurseDto> Get(string Id);
+        Task<int> Create(CreateNurseDto dto);
+        Task<int> Update(UpdateNurseDto dto);
+        Task<string> Delete(int Id);
+        Task<UpdateNurseDto> Get(int Id);
     }
 }

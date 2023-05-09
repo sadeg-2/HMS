@@ -36,9 +36,6 @@ namespace HMS.Core.Dtos
         [Display(Name ="نوبة الممرض")]
         public ShiftsOfEmployees ShiftsOfNurse { get; set; }
 
-
-
-
         public CreateNurseDto() {
             UserType = UserType.Nurse;
         }

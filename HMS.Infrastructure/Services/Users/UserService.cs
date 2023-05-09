@@ -120,13 +120,18 @@ namespace HMS.Infrastructure.Services.Users
                 throw new DuplicateEmailOrPhoneException();
             }
             var user = await _db.Users.FindAsync(dto.Id);
-            var updatedUser = _mapper.Map<UpdateUserDto, User>(dto,user);
+            user.FullName = dto.FullName;
+            user.Email = dto.Email;
+            user.PhoneNumber = dto.PhoneNumber;
+            user.UserName = dto.Email;
+            user.DOB = dto.DOB;
+
             if (dto.Image != null)
             {
-                updatedUser.ImageUrl = await _fileService.SaveFile(dto.Image, FolderNames.ImagesFolder);
+                user.ImageUrl = await _fileService.SaveFile(dto.Image, FolderNames.ImagesFolder);
             }
-            _db.Users.Update(updatedUser);
-            await _db.SaveChangesAsync();
+            _db.Users.Update(user);
+            _db.SaveChanges();
             return user.Id;
         }
 
@@ -151,7 +156,16 @@ namespace HMS.Infrastructure.Services.Users
             {
                 throw new EntityNotFoundException();
             }
-            return _mapper.Map<UpdateUserDto>(user);
+            var updated = new UpdateUserDto() { 
+                Id  = user.Id,
+                DOB = user.DOB,
+                Email=user.Email,
+                FullName=user.FullName,
+                PhoneNumber = user.PhoneNumber ,
+                UserType = user.UserType 
+            };
+
+            return updated;
         }
 
 

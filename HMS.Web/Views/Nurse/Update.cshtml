@@ -1,7 +1,7 @@
-﻿@model UpdateUserDto
+﻿@model UpdateNurseDto
 
 @{
-    ViewData["Title"] = "تعديل مستخدم ";
+    ViewData["Title"] = "تعديل بيانات ممرض ";
     Layout = null;
 }
 <form asp-action="Update" class="ajaxForm" tname="#kt_datatable" enctype="multipart/form-data">
@@ -42,13 +42,13 @@
           
         <div class="col-md-4">
             <div class="form-group">
-                <label asp-for="UserType" class="control-label"></label>
-                <select asp-for="UserType" class="form-control">
-                    <option value="@UserType.Administrator">مدير</option>
-                    <option value="@UserType.Patient">محرر</option>
-                    <option value="@UserType.Doctor">مسؤول التسجيلات </option>
+                <label asp-for="ShiftsOfNurse" class="control-label"></label>
+                <select asp-for="ShiftsOfNurse" class="form-control">
+                    <option value="@ShiftsOfEmployees.Morning">صباحي</option>
+                    <option value="@ShiftsOfEmployees.Evening">مسائي</option>
+                    <option value="@ShiftsOfEmployees.Night">ليلي</option>
                 </select>
-                <span asp-validation-for="UserType" class="text-danger"></span>
+                <span asp-validation-for="ShiftsOfNurse" class="text-danger"></span>
             </div>
         </div>
         <div class="col-md-4">

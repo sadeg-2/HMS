@@ -1,21 +1,13 @@
 ﻿using AutoMapper;
-using HMS.Core.Dtos;
-using HMS.Data;
-using Microsoft.AspNetCore.Authorization;
-using System.Security.Claims;
-using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using HMS.Infrastructure.Services.Users;
-using HMS.Core.ViewModels;
-using Microsoft.EntityFrameworkCore;
 using HMS.Core.Constants;
-using HMS.Core.Exceptions;
-using HMS.Data.Models;
+using HMS.Core.Dtos;
 using HMS.Core.Enums;
+using HMS.Core.Exceptions;
+using HMS.Core.ViewModels;
+using HMS.Data;
+using HMS.Data.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace HMS.Infrastructure.Services.Nurses
 {
@@ -69,7 +61,7 @@ namespace HMS.Infrastructure.Services.Nurses
             return result;
         }
 
-        public async Task<string> Create(CreateNurseDto dto)
+        public async Task<int> Create(CreateNurseDto dto)
         {
             //var emailOrPhoneIsExist = _db.Users.Any(x => !x.IsDelete && (x.Email == dto.Email || x.PhoneNumber == dto.PhoneNumber));
 
@@ -78,10 +70,12 @@ namespace HMS.Infrastructure.Services.Nurses
             //    throw new DuplicateEmailOrPhoneException();
             //}
 
-            var nurse = new Nurse() {
+            var nurse = new Nurse()
+            {
                 NumberOfPatients = 0,
                 ShiftsOfNurse = dto.ShiftsOfNurse,
-                User = new User() {
+                User = new User()
+                {
                     FullName = dto.FullName,
                     PhoneNumber = dto.PhoneNumber,
                     Email = dto.Email,
@@ -89,7 +83,7 @@ namespace HMS.Infrastructure.Services.Nurses
                     UserType = dto.UserType,
                     UserName = dto.Email,
                 },
-           
+
             };
 
             if (dto.Image != null)
@@ -100,7 +94,7 @@ namespace HMS.Infrastructure.Services.Nurses
             var password = GenratePassword();
 
             try
-            
+
             {
                 var result = await _userManager.CreateAsync(nurse.User, password);
 
@@ -115,31 +109,75 @@ namespace HMS.Infrastructure.Services.Nurses
 
             }
             await _emailService.Send(nurse.User.Email, "New Account !", $"Hello dear nurse,\nthis is the login data for your account in the hospital \n Username is : {nurse.User.Email} and Password is {password}");
-           
+
 
 
             await _db.AddAsync(nurse);
             _db.SaveChanges();
 
-            return nurse.User.Id;
+            return nurse.Id;
 
 
         }
 
-        public Task<string> Update(UpdateNurseDto dto)
+        public async Task<int> Update(UpdateNurseDto dto)
+        {
+            var emailOrPhoneIsExist = _db.Nurses.Any(x => !x.IsDelete && (x.User.Email == dto.Email || x.User.PhoneNumber == dto.PhoneNumber) && x.Id != dto.Id);
+            if (emailOrPhoneIsExist)
+            {
+                throw new DuplicateEmailOrPhoneException();
+            }
+            var nurse = await _db.Nurses.FindAsync(dto.Id);
+            nurse.ShiftsOfNurse = dto.ShiftsOfNurse;
+
+            var user = await _db.Users.FindAsync(nurse.UserId);
+            user.FullName = dto.FullName;
+            user.Email = dto.Email;
+            user.PhoneNumber = dto.PhoneNumber;
+            user.UserName = dto.Email;
+            user.DOB = dto.DOB;
+
+
+            if (dto.Image != null)
+            {
+                user.ImageUrl = await _fileService.SaveFile(dto.Image, FolderNames.ImagesFolder);
+            }
+
+
+          
+
+            _db.Users.Update(user);
+            _db.Nurses.Update(nurse);
+            await _db.SaveChangesAsync();
+            return nurse.Id;
+        }
+
+
+        public Task<string> Delete(int Id)
         {
             throw new NotImplementedException();
         }
 
-
-        public Task<string> Delete(string Id)
+        public async Task<UpdateNurseDto> Get(int Id)
         {
-            throw new NotImplementedException();
-        }
+            var nurse = await _db.Nurses.Include(x => x.User).SingleOrDefaultAsync(x => x.Id == Id && !x.IsDelete);
 
-        public Task<UpdateNurseDto> Get(string Id)
-        {
-            throw new NotImplementedException();
+            if (nurse == null)
+            {
+                throw new EntityNotFoundException();
+            }
+            var updateUserDto = new UpdateNurseDto()
+            {
+                DOB = nurse.User.DOB,
+                Email = nurse.User.Email,
+                FullName = nurse.User.FullName,
+                Id = Id,
+                PhoneNumber = nurse.User.PhoneNumber,
+                ShiftsOfNurse = nurse.ShiftsOfNurse,
+                UserType = UserType.Nurse,
+
+            };
+            return updateUserDto;
         }
 
         private string GenratePassword()

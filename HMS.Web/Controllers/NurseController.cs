@@ -33,6 +33,25 @@ namespace HMS.Web.Controllers
             return View();
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Update(int id)
+        {
+            var nurse = await _nurseService.Get(id);
+
+            return View(nurse);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Update([FromForm] UpdateNurseDto updateUserDto)
+        {
+            if (ModelState.IsValid)
+            {
+                await _nurseService.Update(updateUserDto);
+                return RedirectToAction("Index");
+            }
+
+            return View(updateUserDto);
+        }
+
         public async Task<JsonResult> GetNurseData(Pagination pagination, Query query)
         {
             var result = await _nurseService.GetAll(pagination, query);

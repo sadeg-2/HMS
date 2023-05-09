@@ -1,7 +1,7 @@
 ﻿@model CreateNurseDto
 
 @{
-    ViewData["Title"] = "اضافة مستخدم جديد";
+    ViewData["Title"] = "اضافة ممرض جديد";
     Layout = null;
 }
 
@@ -47,7 +47,7 @@
                     <option value="@ShiftsOfEmployees.Night">ليلي</option>
 
                 </select>
-                <span asp-validation-for="UserType" class="text-danger"></span>
+                <span asp-validation-for="ShiftsOfNurse" class="text-danger"></span>
             </div>
         </div>
         <div class="col-md-4">

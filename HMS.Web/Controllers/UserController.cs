@@ -48,7 +48,7 @@ namespace HMS.Web.Controllers
             if (ModelState.IsValid)
             {
                 await _userService.Update(updateUserDto);
-                 return RedirectToAction("Index");
+                return RedirectToAction("Index");
             }
 
             return View(updateUserDto);
