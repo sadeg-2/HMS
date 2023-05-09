@@ -14,7 +14,7 @@ namespace HMS.Data.Models
         public ShiftsOfEmployees ShiftsOfNurse { get; set; }      
         public int NumberOfPatients { get; set; }
         public bool HasDoctor { get; set; }
-        public int DoctorId { get; set; }
+        public int? DoctorId { get; set; }
         public Doctor? Doctors { get; set; }
 
 

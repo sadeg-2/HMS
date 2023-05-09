@@ -11,7 +11,7 @@ namespace HMS.Core.Dtos
 {
     public class CreateUserDto
     {
-        
+
         [Required]
         [Display(Name = "اسم المستخدم")]
         public string FullName { get; set; }
@@ -31,5 +31,7 @@ namespace HMS.Core.Dtos
         [Required]
         [Display(Name = "نوع المستخدم")]
         public UserType UserType { get; set; }
+
+
     }
 }

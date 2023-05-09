@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HMS.Core.Dtos;
 
 namespace HMS.Infrastructure.Services.Patients
 {
@@ -26,6 +27,9 @@ namespace HMS.Infrastructure.Services.Patients
             _fileService = fileService;
             _emailService = emailService;
         }
+
+      
+
 
 
 
