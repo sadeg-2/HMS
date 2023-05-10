@@ -1,4 +1,21 @@
-﻿<html lang="en" direction="rtl" style="direction: rtl;">
+﻿@{
+    string Action = null;
+    string Controller = null;
+    string currentURL = null;
+    try
+    {
+        Action = ViewContext.RouteData.Values["action"].ToString().ToLower();
+        Controller = ViewContext.RouteData.Values["Controller"].ToString().ToLower();
+        currentURL = Controller + "/" + Action;
+
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine(e.Message);
+    }
+}
+
+<html lang="en" direction="rtl" style="direction: rtl;">
 <head>
     <base href="../../../">
     <meta charset="utf-8" />
@@ -155,7 +172,7 @@
                                 </li>
 
                                 <li class="menu-item menu-item" aria-haspopup="true">
-                                    <a href="~/Category/Index" class="menu-link">
+                                    <a href="~/Nurse/Index" class="menu-link">
                                         <span class="svg-icon svg-icon-primary svg-icon-2x">
                                             <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo1/dist/../src/media/svg/icons/General/Duplicate.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -165,11 +182,11 @@
                                                 </g>
                                             </svg><!--end::Svg Icon-->
                                         </span>
-                                        <span class="menu-text"> ادارة التصنيفات </span>
+                                        <span class="menu-text"> ادارة الممرضين </span>
                                     </a>
                                 </li>
                                 <li class="menu-item menu-item" aria-haspopup="true">
-                                    <a href="~/Post/Index" class="menu-link">
+                                    <a href="~/Nurse/Index" class="menu-link">
                                         <span class="svg-icon svg-icon-primary svg-icon-2x">
                                             <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo1/dist/../src/media/svg/icons/Communication/Write.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">

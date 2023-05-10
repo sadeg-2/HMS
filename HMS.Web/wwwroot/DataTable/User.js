@@ -21,6 +21,7 @@ var KTDatatableAutoColumnHideDemo = function () {
                 serverPaging: true,
                 serverFiltering: true,
                 serverSorting: true,
+                
             },
 
             layout: {
@@ -39,8 +40,9 @@ var KTDatatableAutoColumnHideDemo = function () {
             // columns definition
             columns: [{
                 field: 'fullName',
-                title: 'الاسم كامل',
-                width: 'auto'
+                title: 'الاسم ااكامل',
+                width: 'auto',
+                sortable: true,
             }, {
                 field: 'email',
                 title: 'البريد ',
@@ -48,14 +50,13 @@ var KTDatatableAutoColumnHideDemo = function () {
             }, {
                 field: 'userType',
                 title: 'نوع المستخدم ',
-                width: '250'
-            }
-                , {
+                width: '250',
+                sortable: true,
+            }, {
                 field: 'phoneNumber',
                 title: 'رقم الجوال ',
-                width: 'auto'
-            },
-            {
+                width: 'auto',
+            }, {
                 field: 'Actions',
                 title: 'العمليات',
                 sortable: false,
@@ -107,6 +108,17 @@ var KTDatatableAutoColumnHideDemo = function () {
         },
     };
 }();
+KTDatatableAutoColumnHideDemo.on('sort', function (e) {
+    // Check if the clicked column is the "Name" column
+    if (e.field === 'fullName') {
+        // Toggle between ascending and descending order
+        if (e.sort === 'asc') {
+            datatable.sort('name', 'desc');
+        } else {
+            datatable.sort('name', 'asc');
+        }
+    }
+});
 
 jQuery(document).ready(function () {
     KTDatatableAutoColumnHideDemo.init();

@@ -2,6 +2,7 @@
 using HMS.Core.ViewModels;
 using HMS.Infrastructure.Services.Users;
 using Microsoft.AspNetCore.Mvc;
+using Result = HMS.Core.Constants.Results;
 
 namespace HMS.Web.Controllers
 {
@@ -30,7 +31,7 @@ namespace HMS.Web.Controllers
             if (ModelState.IsValid)
             {
                 await _userService.Create(createUserDto);
-                return RedirectToAction("Index");
+                return Ok(Result.AddSuccessResult());
             }
 
             return View();
@@ -48,7 +49,7 @@ namespace HMS.Web.Controllers
             if (ModelState.IsValid)
             {
                 await _userService.Update(updateUserDto);
-                return RedirectToAction("Index");
+                return Ok(Result.UpdateStatusSuccessResult());
             }
 
             return View(updateUserDto);

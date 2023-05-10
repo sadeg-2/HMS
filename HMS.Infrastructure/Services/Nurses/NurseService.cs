@@ -6,6 +6,7 @@ using HMS.Core.Exceptions;
 using HMS.Core.ViewModels;
 using HMS.Data;
 using HMS.Data.Models;
+using HMS.Infrastructure.Services.Users;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,12 +19,14 @@ namespace HMS.Infrastructure.Services.Nurses
         private readonly IEmailService _emailService;
         private readonly IFileService _fileService;
         private readonly UserManager<User> _userManager;
+        private readonly IUserService _userService;
         public NurseService(
                         IEmailService emailService,
                         HMSDbContext db,
                         IMapper mapper,
                         IFileService fileService,
-                        UserManager<User> userManager
+                        UserManager<User> userManager,
+                        IUserService userService
                         )
         {
             _db = db;
@@ -31,6 +34,7 @@ namespace HMS.Infrastructure.Services.Nurses
             _emailService = emailService;
             _fileService = fileService;
             _userManager = userManager;
+            _userService = userService;
         }
 
 
@@ -63,12 +67,12 @@ namespace HMS.Infrastructure.Services.Nurses
 
         public async Task<int> Create(CreateNurseDto dto)
         {
-            //var emailOrPhoneIsExist = _db.Users.Any(x => !x.IsDelete && (x.Email == dto.Email || x.PhoneNumber == dto.PhoneNumber));
+            var emailOrPhoneIsExist = _db.Users.Any(x => !x.IsDelete && (x.Email == dto.Email || x.PhoneNumber == dto.PhoneNumber));
 
-            //if (emailOrPhoneIsExist)
-            //{
-            //    throw new DuplicateEmailOrPhoneException();
-            //}
+            if (emailOrPhoneIsExist)
+            {
+                throw new DuplicateEmailOrPhoneException();
+            }
 
             var nurse = new Nurse()
             {
@@ -153,9 +157,22 @@ namespace HMS.Infrastructure.Services.Nurses
         }
 
 
-        public Task<string> Delete(int Id)
+        public async Task<int> Delete(int Id)
         {
-            throw new NotImplementedException();
+            var nurse = await _db.Nurses.SingleOrDefaultAsync(x => x.Id == Id && !x.IsDelete);
+            if (nurse == null)
+            {
+                throw new EntityNotFoundException();
+            }
+            var userId = nurse.UserId;
+            nurse.IsDelete = true;
+            _db.Nurses.Update(nurse);
+            await _db.SaveChangesAsync();
+            if (userId != null)
+            {
+                await _userService.Delete(userId);
+            }
+            return nurse.Id;
         }
 
         public async Task<UpdateNurseDto> Get(int Id)

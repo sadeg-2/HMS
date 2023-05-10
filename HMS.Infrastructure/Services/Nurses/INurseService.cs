@@ -12,7 +12,7 @@ namespace HMS.Infrastructure.Services.Nurses
         Task<ResponseDto> GetAll(Pagination pagination, Query query);
         Task<int> Create(CreateNurseDto dto);
         Task<int> Update(UpdateNurseDto dto);
-        Task<string> Delete(int Id);
+        Task<int> Delete(int Id);
         Task<UpdateNurseDto> Get(int Id);
     }
 }
