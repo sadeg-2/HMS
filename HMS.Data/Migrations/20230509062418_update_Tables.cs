@@ -828,7 +828,7 @@ namespace HMS.Data.Migrations
                 column: "nursesId",
                 principalTable: "nurses",
                 principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.NoAction);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_patientSchdules_patients_patientId",
@@ -836,7 +836,7 @@ namespace HMS.Data.Migrations
                 column: "patientId",
                 principalTable: "patients",
                 principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.NoAction);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_patientSchdules_schidules_schiduleId",
@@ -844,7 +844,7 @@ namespace HMS.Data.Migrations
                 column: "schiduleId",
                 principalTable: "schidules",
                 principalColumn: "id",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.NoAction);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_patientTreatments_patients_patientId",
@@ -852,7 +852,7 @@ namespace HMS.Data.Migrations
                 column: "patientId",
                 principalTable: "patients",
                 principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.NoAction);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_patientTreatments_treatments_treatmentId",
@@ -860,7 +860,7 @@ namespace HMS.Data.Migrations
                 column: "treatmentId",
                 principalTable: "treatments",
                 principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.NoAction);
         }
     }
 }

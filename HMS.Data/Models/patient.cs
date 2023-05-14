@@ -8,7 +8,7 @@ namespace HMS.Data.Models
 
         public bool HasNurse { get; set; }
 
-        public int NurseId { get; set; }
+        public int? NurseId { get; set; }
         public Nurse? Nurse { get; set; }
 
         public string UserId { get; set; }

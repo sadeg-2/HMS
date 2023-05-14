@@ -30,6 +30,7 @@ namespace HMS.Infrastructure.AutoMapper
 
             CreateMap<Doctor, DoctorViewModel>();
 
+            CreateMap<Patient, PatientViewModel>();
 
 
         }
