@@ -46,11 +46,6 @@ var KTDatatableAutoColumnHideDemo = function () {
                 title: 'البريد ',
                 width: '250'
             }, {
-                field: 'user.userType',
-                title: 'نوع المستخدم ',
-                width: '250'
-            }
-                , {
                 field: 'user.phoneNumber',
                 title: 'رقم الجوال ',
                 width: 'auto'

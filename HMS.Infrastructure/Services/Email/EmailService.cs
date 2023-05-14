@@ -37,7 +37,7 @@ namespace HMS.Infrastructure.Services
 
                 await emailClient.SendMailAsync(message);
             }
-            catch (Exception e)
+            catch (Exception)
             {
 
             }

@@ -28,6 +28,8 @@ namespace HMS.Infrastructure.AutoMapper
             CreateMap<UpdateUserDto , UpdateNurseDto>();
             CreateMap<UpdateNurseDto , UpdateUserDto>();
 
+            CreateMap<Doctor, DoctorViewModel>();
+
 
 
         }

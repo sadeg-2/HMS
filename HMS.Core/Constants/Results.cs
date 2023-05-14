@@ -27,7 +27,21 @@ namespace HMS.Core.Constants
         {
             return new { status = 1, msg = "s: تم حذف العنصر بنجاح", close = 1 };
         }
+        public static object AddFailResult()
+        {
+            return new { status = 1, msg = "e:فشلت عملية الاضافة", close = 1 };
+        }
 
-    
+        public static object EditFailResult()
+        {
+            return new { status = 1, msg = "e: فشل تحديث بيانات العنصر  ", close = 1 };
+        }
+
+        public static object DeleteFailResult()
+        {
+            return new { status = 1, msg = "e: فشل حذف العنصر ", close = 1 };
+        }
+
+
     }
 }

@@ -8,6 +8,7 @@ using HMS.Data;
 using HMS.Data.Models;
 using HMS.Infrastructure.Services.Users;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace HMS.Infrastructure.Services.Nurses
@@ -72,6 +73,7 @@ namespace HMS.Infrastructure.Services.Nurses
             if (emailOrPhoneIsExist)
             {
                 throw new DuplicateEmailOrPhoneException();
+               
             }
 
             var nurse = new Nurse()
@@ -117,7 +119,7 @@ namespace HMS.Infrastructure.Services.Nurses
 
 
             await _db.AddAsync(nurse);
-            _db.SaveChanges();
+            await _db.SaveChangesAsync();
 
             return nurse.Id;
 
@@ -183,7 +185,7 @@ namespace HMS.Infrastructure.Services.Nurses
             {
                 throw new EntityNotFoundException();
             }
-            var updateUserDto = new UpdateNurseDto()
+            var updateNurseDto = new UpdateNurseDto()
             {
                 DOB = nurse.User.DOB,
                 Email = nurse.User.Email,
@@ -194,7 +196,7 @@ namespace HMS.Infrastructure.Services.Nurses
                 UserType = UserType.Nurse,
 
             };
-            return updateUserDto;
+            return updateNurseDto;
         }
 
         private string GenratePassword()

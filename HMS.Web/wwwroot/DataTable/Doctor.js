@@ -13,7 +13,7 @@ var KTDatatableAutoColumnHideDemo = function () {
                 type: 'remote',
                 source: {
                     read: {
-                        url: 'User/GetUserData',
+                        url: 'Doctor/GetDoctorData',
                     },
                 },
                 pageSize: 10,
@@ -38,26 +38,25 @@ var KTDatatableAutoColumnHideDemo = function () {
             },
             // columns definition
             columns: [{
-                field: 'fullName',
+                field: 'user.fullName',
                 title: 'الاسم كامل',
                 width: 'auto'
             }, {
-                field: 'email',
+                field: 'user.email',
                 title: 'البريد ',
                 width: '250'
             }, {
-                field: 'userType',
-                title: 'نوع المستخدم ',
-                width: '250'
-            }
-                , {
-                field: 'phoneNumber',
+                field: 'user.phoneNumber',
                 title: 'رقم الجوال ',
                 width: 'auto'
-            },
-         
-
+                },
             {
+                field: 'shiftsOfDoctor',
+                    title: ' موعد المناوبة ',
+                    width: 'auto'
+            },
+
+                {
                 field: 'Actions',
                 title: 'العمليات',
                 sortable: false,
@@ -65,7 +64,7 @@ var KTDatatableAutoColumnHideDemo = function () {
                 overflow: 'visible',
                 autoHide: false,
                 template: function (data) {
-                    return '\<a  href ="/Nurse/Update/' + data.id + '" class="PopUp btn btn-sm btn-clean btn-icon mr-2" title="تعديل  بيانات ' + data.fullName + ' ">\
+                    return '\<a  href ="/Doctor/Update/' + data.id + '" class="PopUp btn btn-sm btn-clean btn-icon mr-2" title="تعديل  بيانات ' + data.fullName + ' ">\
                             <span class="svg-icon svg-icon-warning svg-icon-md">\
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">\
                                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">\
@@ -76,7 +75,7 @@ var KTDatatableAutoColumnHideDemo = function () {
                                 </svg>\
                             </span>\
                         </a>\
-                        <a href ="/Nurse/Delete/' + data.id + '" tname="#kt_datatable" class="Confirm btn btn-sm btn-clean btn-icon" title="Delete">\
+                        <a href ="/Doctor/Delete/' + data.id + '" tname="#kt_datatable" class="Confirm btn btn-sm btn-clean btn-icon" title="Delete">\
                             <span class="svg-icon svg-icon-danger svg-icon-danger svg-icon-md">\
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">\
                                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">\

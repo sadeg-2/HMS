@@ -1,17 +1,18 @@
 ﻿using HMS.Core.Dtos;
-using HMS.Infrastructure.Services.Nurses;
+using HMS.Infrastructure.Services.Doctors;
 using HMS.Infrastructure.Services.Users;
 using Microsoft.AspNetCore.Mvc;
 using Results = HMS.Core.Constants.Results;
 
+
 namespace HMS.Web.Controllers
 {
-    public class NurseController : BaseController
+    public class DoctorController : BaseController
     {
-        protected INurseService _nurseService;
-        public NurseController(INurseService nurseService, IUserService userService) : base(userService)
+        protected readonly IDoctorService _doctorService;
+        public DoctorController(IUserService userService, IDoctorService doctorService) : base(userService)
         {
-            _nurseService = nurseService;
+            _doctorService = doctorService;
         }
         public IActionResult Index()
         {
@@ -26,13 +27,13 @@ namespace HMS.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromForm] CreateNurseDto dto)
+        public async Task<IActionResult> Create([FromForm] CreateDoctorDto dto)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    await _nurseService.Create(dto);
+                    await _doctorService.Create(dto);
                 }
                 catch (Exception)
                 {
@@ -47,18 +48,18 @@ namespace HMS.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Update(int id)
         {
-            var nurse = await _nurseService.Get(id);
+            var nurse = await _doctorService.Get(id);
 
             return View(nurse);
         }
         [HttpPost]
-        public async Task<IActionResult> Update([FromForm] UpdateNurseDto updateNurseDto)
+        public async Task<IActionResult> Update([FromForm] UpdateDoctorDto updateDoctorDto)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    await _nurseService.Update(updateNurseDto);
+                    await _doctorService.Update(updateDoctorDto);
                 }
                 catch (Exception)
                 {
@@ -67,12 +68,12 @@ namespace HMS.Web.Controllers
                 return Ok(Results.UpdateStatusSuccessResult());
             }
 
-            return View(updateNurseDto);
+            return View(updateDoctorDto);
         }
 
-        public async Task<JsonResult> GetNurseData(Pagination pagination, Query query)
+        public async Task<JsonResult> GetDoctorData(Pagination pagination, Query query)
         {
-            var result = await _nurseService.GetAll(pagination, query);
+            var result = await _doctorService.GetAll(pagination, query);
             return Json(result);
         }
         [HttpGet]
@@ -80,7 +81,7 @@ namespace HMS.Web.Controllers
         {
             try
             {
-                await _nurseService.Delete(id);
+                await _doctorService.Delete(id);
             }
             catch (Exception)
             {
@@ -88,7 +89,6 @@ namespace HMS.Web.Controllers
             }
             return Ok(Results.DeleteSuccessResult());
         }
-
 
     }
 }
