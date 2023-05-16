@@ -17,5 +17,7 @@ namespace HMS.Core.ViewModels
         public int NumberOfPatients { get; set; }
         public string HasDoctor { get; set; }
 
+        public DoctorViewModel doctor { get; set; }
+
     } 
 }

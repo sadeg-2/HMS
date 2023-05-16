@@ -13,7 +13,7 @@ namespace HMS.Core.Dtos
     {
 
         [Required]
-        [Display(Name = "اسم المستخدم")]
+        [Display(Name = "اسم الممرض")]
         public string FullName { get; set; }
         [Required]
         [EmailAddress]

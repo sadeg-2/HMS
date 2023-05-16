@@ -6,9 +6,9 @@ using HMS.Core.Exceptions;
 using HMS.Core.ViewModels;
 using HMS.Data;
 using HMS.Data.Models;
+using HMS.Infrastructure.Services.Patients;
 using HMS.Infrastructure.Services.Users;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace HMS.Infrastructure.Services.Nurses
@@ -21,13 +21,15 @@ namespace HMS.Infrastructure.Services.Nurses
         private readonly IFileService _fileService;
         private readonly UserManager<User> _userManager;
         private readonly IUserService _userService;
+        private readonly IPatientService _patientService;
         public NurseService(
                         IEmailService emailService,
                         HMSDbContext db,
                         IMapper mapper,
                         IFileService fileService,
                         UserManager<User> userManager,
-                        IUserService userService
+                        IUserService userService,
+                        IPatientService patientService
                         )
         {
             _db = db;
@@ -36,12 +38,16 @@ namespace HMS.Infrastructure.Services.Nurses
             _fileService = fileService;
             _userManager = userManager;
             _userService = userService;
+            _patientService = patientService;
         }
 
 
         public async Task<ResponseDto> GetAll(Pagination pagination, Query query)
         {
-            var queryString = _db.Nurses.Include(x => x.User).Where(x => !x.IsDelete &&
+            var queryString = _db.Nurses.Include(x => x.User).
+                                Include(nurse => nurse.Doctors).
+                                ThenInclude(doctor => doctor.User).
+                                Where(x => !x.IsDelete &&
                                 (x.User.FullName.Contains(query.GeneralSearch) ||
                                 string.IsNullOrWhiteSpace(query.GeneralSearch) ||
                                 x.User.Email.Contains(query.GeneralSearch) ||
@@ -69,11 +75,9 @@ namespace HMS.Infrastructure.Services.Nurses
         public async Task<int> Create(CreateNurseDto dto)
         {
             var emailOrPhoneIsExist = _db.Users.Any(x => !x.IsDelete && (x.Email == dto.Email || x.PhoneNumber == dto.PhoneNumber));
-
             if (emailOrPhoneIsExist)
             {
                 throw new DuplicateEmailOrPhoneException();
-               
             }
 
             var nurse = new Nurse()
@@ -89,8 +93,12 @@ namespace HMS.Infrastructure.Services.Nurses
                     UserType = dto.UserType,
                     UserName = dto.Email,
                 },
+                DoctorId = await GetLessThanDoctor(),
+                CreatedBy = _userService.GetCurrentUserName(),
+                CreatedAt = DateTime.Now ,
 
             };
+
 
             if (dto.Image != null)
             {
@@ -110,20 +118,18 @@ namespace HMS.Infrastructure.Services.Nurses
                 }
 
             }
-            catch (Exception e)
+            catch (Exception)
             {
 
             }
             await _emailService.Send(nurse.User.Email, "New Account !", $"Hello dear nurse,\nthis is the login data for your account in the hospital \n Username is : {nurse.User.Email} and Password is {password}");
 
-
-
             await _db.AddAsync(nurse);
             await _db.SaveChangesAsync();
 
+            await DistributionNurse();
+
             return nurse.Id;
-
-
         }
 
         public async Task<int> Update(UpdateNurseDto dto)
@@ -142,16 +148,15 @@ namespace HMS.Infrastructure.Services.Nurses
             user.PhoneNumber = dto.PhoneNumber;
             user.UserName = dto.Email;
             user.DOB = dto.DOB;
+            user.UpdatedBy = _userService.GetCurrentUserName();
+            user.UpdatedAt = DateTime.Now;
 
 
             if (dto.Image != null)
             {
                 user.ImageUrl = await _fileService.SaveFile(dto.Image, FolderNames.ImagesFolder);
             }
-
-
-          
-
+   
             _db.Users.Update(user);
             _db.Nurses.Update(nurse);
             await _db.SaveChangesAsync();
@@ -173,7 +178,9 @@ namespace HMS.Infrastructure.Services.Nurses
             if (userId != null)
             {
                 await _userService.Delete(userId);
+                await DistributionNurse();
             }
+
             return nurse.Id;
         }
 
@@ -204,5 +211,50 @@ namespace HMS.Infrastructure.Services.Nurses
             return Guid.NewGuid().ToString().Substring(1, 7);
         }
 
+        private async Task DistributionNurse()
+        {
+            var patients = await _db.Patients.Where(patient => !patient.IsDelete).ToListAsync();
+           
+            var nurses = await _db.Nurses.Where(nurse => !nurse.IsDelete).ToListAsync();
+            foreach (var nurse in nurses)
+            {
+                nurse.NumberOfPatients = 0;
+            }
+            if (patients == null || patients == null)
+            {
+                return;
+            }
+            var numOfNurse = nurses.Count();
+            var numOfPatient = patients.Count();
+            for (int i = 0 , j = 0; i < numOfPatient; i++)
+            {
+                patients[i].NurseId = nurses[j].Id;
+                nurses[j].NumberOfPatients++;
+                j++;
+                
+                if (j == numOfNurse)
+                {
+                    j = 0;
+                }
+            }
+            _db.Nurses.UpdateRange(nurses);
+            _db.Patients.UpdateRange(patients);
+            await _db.SaveChangesAsync();
+        }
+
+        private async Task<int?> GetLessThanDoctor()
+        {
+            var doctor = await _db.Doctors
+                .Where(x => !x.IsDelete)
+                .OrderBy(x => x.NumberOfNurses)
+                .FirstOrDefaultAsync();
+
+            if (doctor == null)
+            {
+                return null;
+            }
+            return doctor.Id;
+
+        }
     }
 }

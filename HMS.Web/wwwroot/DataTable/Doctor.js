@@ -44,16 +44,15 @@ var KTDatatableAutoColumnHideDemo = function () {
             }, {
                 field: 'user.email',
                 title: 'البريد ',
-                width: '250'
-            }, {
-                field: 'user.phoneNumber',
-                title: 'رقم الجوال ',
                 width: 'auto'
-                },
-            {
+            },{
                 field: 'shiftsOfDoctor',
                     title: ' موعد المناوبة ',
                     width: 'auto'
+            },{
+                field: 'numberOfNurses',
+                title: ' عدد الممرضين ',
+                width: 'auto'
             },
 
                 {

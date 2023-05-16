@@ -17,7 +17,7 @@ namespace HMS.Web.Controllers
 
         [HttpGet]
         public IActionResult Create() {
-
+            
             return View();
         }
         public async Task<JsonResult> GetUserData(Pagination pagination, Query query)
@@ -60,6 +60,12 @@ namespace HMS.Web.Controllers
             var user = await _userService.Get(id);
 
             return View(user);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ExportToExcel()
+        {
+            return File(await _userService.ExportToExcel(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "report.xlsx");
         }
     }
 }

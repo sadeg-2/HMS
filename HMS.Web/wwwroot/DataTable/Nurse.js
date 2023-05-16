@@ -43,20 +43,21 @@ var KTDatatableAutoColumnHideDemo = function () {
                 width: 'auto'
             }, {
                 field: 'user.email',
-                title: 'البريد ',
-                width: '250'
-            }, {
-                field: 'user.phoneNumber',
-                title: 'رقم الجوال ',
+                title: ' البريد ',
                 width: 'auto'
-                },
-            {
+            }, {
+                field: 'numberOfPatients',
+                title: ' عدد المرضى ',
+                width: 'auto'
+            },{
                 field: 'shiftsOfNurse',
-                    title: ' موعد المناوبة ',
-                    width: 'auto'
-            },
-
-                {
+                title: ' موعد المناوبة ',
+                width: 'auto'
+            }, {
+                field: 'doctor.user.fullName',
+                title: ' الدكتور المشرف  ',
+                width: 'auto'
+            },{
                 field: 'Actions',
                 title: 'العمليات',
                 sortable: false,

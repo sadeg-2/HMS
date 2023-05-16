@@ -1,3 +1,4 @@
+using DocumentFormat.OpenXml.Office2016.Drawing.ChartDrawing;
 using HMS.Data;
 using HMS.Data.Models;
 using HMS.Infrastructure.AutoMapper;
@@ -50,6 +51,10 @@ builder.Services.AddTransient<IEmailService, EmailService>();
 builder.Services.AddTransient<IPatientService, PatientService>();
 builder.Services.AddTransient<IDoctorService, DoctorService>();
 builder.Services.AddTransient<INurseService, NurseService>();
+
+ builder.Services.AddHttpContextAccessor();
+
+
 
 
 

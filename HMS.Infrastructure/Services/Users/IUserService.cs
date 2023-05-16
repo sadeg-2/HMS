@@ -16,6 +16,8 @@ namespace HMS.Infrastructure.Services.Users
         UserViewModel GetUserByUsername(string username);
         Task<string> Delete(string Id);
         Task<UpdateUserDto> Get(string Id);
+        public string GetCurrentUserName();
+        Task<byte[]> ExportToExcel();
 
 
 

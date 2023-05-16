@@ -61,6 +61,9 @@ namespace HMS.Infrastructure.Services.Patients
                     UserType = UserType.Patient,
                     UserName = dto.Email,
                 },
+                NurseId = await GetLessThanNurse(),
+                CreatedBy = _userService.GetCurrentUserName(),
+                CreatedAt = DateTime.Now,
             };
             if (dto.Image != null)
             {
@@ -107,6 +110,7 @@ namespace HMS.Infrastructure.Services.Patients
             {
                 await _userService.Delete(userId);
             }
+
             return patient.Id;
         }
 
@@ -133,7 +137,10 @@ namespace HMS.Infrastructure.Services.Patients
 
         public async Task<ResponseDto> GetAll(Pagination pagination, Query query)
         {
-            var queryString = _db.Patients.Include(x => x.User).Where(x => !x.IsDelete &&
+            var queryString = _db.Patients.Include(x => x.User).
+                                           Include(x => x.Nurse).ThenInclude(x => x.User).
+                                           Include(x => x.Nurse).ThenInclude(x => x.Doctors).ThenInclude(x => x.User).
+                                           Where(x => !x.IsDelete &&
                                (x.User.FullName.Contains(query.GeneralSearch) ||
                                string.IsNullOrWhiteSpace(query.GeneralSearch) ||
                                x.User.Email.Contains(query.GeneralSearch) ||
@@ -180,6 +187,8 @@ namespace HMS.Infrastructure.Services.Patients
                 {
                     user.ImageUrl = await _fileService.SaveFile(dto.Image, FolderNames.ImagesFolder);
                 }
+                user.UpdatedBy = _userService.GetCurrentUserName();
+                user.UpdatedAt = DateTime.Now;
             }
             else {
                 throw new EntityNotFoundException();
@@ -189,6 +198,19 @@ namespace HMS.Infrastructure.Services.Patients
             _db.Patients.Update(patient);
             await _db.SaveChangesAsync();
             return patient.Id;
+        }
+
+        private async Task<int?> GetLessThanNurse() {
+            var nurse = await _db.Nurses
+                .Where(x => !x.IsDelete)
+                .OrderBy(x => x.NumberOfPatients)
+                .FirstOrDefaultAsync();
+
+            if (nurse == null) {
+                return null;
+            }
+            return nurse.Id;
+   
         }
         private string GenratePassword()
         {

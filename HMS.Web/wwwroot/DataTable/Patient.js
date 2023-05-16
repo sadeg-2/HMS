@@ -22,6 +22,7 @@ var KTDatatableAutoColumnHideDemo = function () {
                 serverFiltering: true,
                 serverSorting: true,
             },
+
             layout: {
                 scroll: false
             },
@@ -48,15 +49,16 @@ var KTDatatableAutoColumnHideDemo = function () {
                 field: 'user.phoneNumber',
                 title: 'رقم الجوال ',
                 width: 'auto'
+            },
+            {
+                field: 'nurse.user.fullName',
+                title: ' اسم الممرض',
+                width: 'auto'
             }, {
-                    field: 'NameOfNurse',
-                    title: ' اسم الممرض ',
+                    field: 'doctor.user.fullName',
+                    title: ' اسم الطبيب',
                     width: 'auto'
-             }, {
-                    field: 'user.phoneNumber',
-                    title: ' اسم الطبيب ',
-                    width: 'auto'
-             },{
+            }, {
                 field: 'Actions',
                 title: 'العمليات',
                 sortable: false,

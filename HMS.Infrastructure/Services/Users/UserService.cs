@@ -11,6 +11,9 @@ using Microsoft.EntityFrameworkCore;
 using HMS.Core.Constants;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using Query = HMS.Core.Dtos.Query;
+using HMS.Infrastructure.Helpers;
+using Microsoft.AspNetCore.Http;
+using System.Security.Claims;
 
 namespace HMS.Infrastructure.Services.Users
 {
@@ -21,14 +24,23 @@ namespace HMS.Infrastructure.Services.Users
         private readonly IFileService _fileService;
         private readonly UserManager<User> _userManager;
         private readonly IEmailService _emailService;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public UserService(IEmailService emailService, HMSDbContext db,IMapper mapper,UserManager<User> userManager, IFileService fileService)
+        public UserService(
+                IEmailService emailService,
+                HMSDbContext db,
+                IMapper mapper,
+                UserManager<User> userManager,
+                IFileService fileService,
+                IHttpContextAccessor httpContextAccessor
+                )
         {
             _db = db;
             _mapper = mapper;
             _userManager = userManager;
             _fileService = fileService;
             _emailService = emailService;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public List<User> GetAllData()
@@ -168,7 +180,33 @@ namespace HMS.Infrastructure.Services.Users
             return updated;
         }
 
+        public async Task<byte[]> ExportToExcel()
+        {
+            var users = await _db.Users.Where(x => !x.IsDelete).ToListAsync();
 
+            return ExcelHelpers.ToExcel(new Dictionary<string, ExcelColumn>
+            {
+                {"FullName", new ExcelColumn("FullName", 0)},
+                {"Email", new ExcelColumn("Email", 1)},
+                {"Phone", new ExcelColumn("Phone", 2)}
+            }, new List<ExcelRow>(users.Select(e => new ExcelRow
+            {
+                Values = new Dictionary<string, string>
+                {
+                    {"FullName", e.FullName},
+                    {"Email", e.Email},
+                    {"Phone", e.PhoneNumber}
+                }
+            })));
+        }
+        public string GetCurrentUserName()
+        {
+            string userId =  _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            User currentUser = _userManager.FindByIdAsync(userId).Result;
+            string systemUserName = currentUser.FullName;
+
+            return systemUserName;
+        }
 
         private string GenratePassword()
         {

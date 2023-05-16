@@ -65,6 +65,8 @@ namespace HMS.Infrastructure.Services.Doctors
                     UserType = UserType.Doctor,
                     UserName = dto.Email,
                 },
+                CreatedBy = _userService.GetCurrentUserName(),
+                CreatedAt = DateTime.Now,
             };
             if (dto.Image != null)
             {
@@ -93,6 +95,8 @@ namespace HMS.Infrastructure.Services.Doctors
             await _db.AddAsync(doctor);
             await _db.SaveChangesAsync();
 
+            await DistributionDoctor();
+
             return doctor.Id;
         }
 
@@ -110,6 +114,7 @@ namespace HMS.Infrastructure.Services.Doctors
             if (userId != null)
             {
                 await _userService.Delete(userId);
+                await DistributionDoctor();
             }
             return doctor.Id;
         }
@@ -179,6 +184,9 @@ namespace HMS.Infrastructure.Services.Doctors
             user.UserName = dto.Email;
             user.DOB = dto.DOB;
 
+            user.UpdatedBy = _userService.GetCurrentUserName();
+            user.UpdatedAt = DateTime.Now;
+
             if (dto.Image != null)
             {
                 user.ImageUrl = await _fileService.SaveFile(dto.Image, FolderNames.ImagesFolder);
@@ -188,6 +196,36 @@ namespace HMS.Infrastructure.Services.Doctors
             _db.Doctors.Update(doctor);
             await _db.SaveChangesAsync();
             return doctor.Id;
+        }
+
+        private async Task DistributionDoctor()
+        {
+            var doctors = await _db.Doctors.Where(doctor => !doctor.IsDelete).ToListAsync();
+
+            var nurses = await _db.Nurses.Where(nurse => !nurse.IsDelete).ToListAsync();
+            foreach (var doctor in doctors)
+            {
+                doctor.NumberOfNurses = 0;
+            }
+            if (nurses == null || doctors == null)
+            {
+                return;
+            }
+            var numOfNurse = nurses.Count();
+            var numOfDoctor = doctors.Count();
+            for (int i = 0, j = 0; i < numOfNurse; i++)
+            {
+                nurses[i].DoctorId = doctors[j].Id;
+                doctors[j].NumberOfNurses++;
+                j++;
+                if (j == numOfDoctor)
+                {
+                    j = 0;
+                }
+            }
+            _db.Nurses.UpdateRange(nurses);
+            _db.Doctors.UpdateRange(doctors);
+            await _db.SaveChangesAsync();
         }
         private string GenratePassword()
         {

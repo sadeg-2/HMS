@@ -11,9 +11,9 @@ namespace HMS.Core.ViewModels
         public int Id { get; set; }
         public UserViewModel User { get; set; }
 
-        public string? NameOfNurse { get; set; }
+        public NurseViewModel? Nurse { get; set; }
 
-        public string? NameOfDoctor { get; set; }
+        public DoctorViewModel? Doctor { get; set; }
 
 
     }
