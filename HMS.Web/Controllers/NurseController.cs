@@ -88,7 +88,11 @@ namespace HMS.Web.Controllers
             }
             return Ok(Results.DeleteSuccessResult());
         }
-
+        [HttpGet]
+        public async Task<IActionResult> ExportToExcel()
+        {
+            return File(await _nurseService.ExportToExcel(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "reportNurse.xlsx");
+        }
 
     }
 }

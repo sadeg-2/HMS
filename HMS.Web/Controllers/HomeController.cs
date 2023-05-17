@@ -1,33 +1,44 @@
-﻿using HMS.Core.Dtos;
+﻿using HMS.Infrastructure.Services;
 using HMS.Infrastructure.Services.Users;
+using HMS.Core.Enums;
+using HMS.Web.Controllers;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
+using System.Threading.Tasks;
+using HMS.Infrastructure.Services.DashBoard;
 
 namespace HMS.Web.Controllers
 {
     public class HomeController : BaseController
     {
-        private readonly ILogger<HomeController> _logger;
 
-        public HomeController( IUserService userService, ILogger<HomeController> logger):base(userService)
+        private readonly IDashboardService _dashboardService;
+
+        public HomeController(IDashboardService dashboardService, IUserService userService) : base(userService)
         {
-            _logger = logger;
+            _dashboardService = dashboardService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            if (userType != "Administrator")
+            {
+                return Redirect("/Patient");
+            }
+            var data = await _dashboardService.GetData();
+
+            return View(data);
         }
 
-        public IActionResult Privacy()
+        public async Task<IActionResult> GetUserTypeChartData()
         {
-            return View();
-        }
-        [HttpGet]
-        public IActionResult Create()
-        {
-            return View();
+            var data = await _dashboardService.GetUserTypeChart();
+
+            return Ok(data);
         }
     }
 }

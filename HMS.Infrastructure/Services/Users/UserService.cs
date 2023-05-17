@@ -14,6 +14,7 @@ using Query = HMS.Core.Dtos.Query;
 using HMS.Infrastructure.Helpers;
 using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
+using System.Linq;
 
 namespace HMS.Infrastructure.Services.Users
 {
@@ -188,14 +189,17 @@ namespace HMS.Infrastructure.Services.Users
             {
                 {"FullName", new ExcelColumn("FullName", 0)},
                 {"Email", new ExcelColumn("Email", 1)},
-                {"Phone", new ExcelColumn("Phone", 2)}
+                {"Phone", new ExcelColumn("Phone", 2)},
+                {"User Type", new ExcelColumn("User Type", 3)}
+
             }, new List<ExcelRow>(users.Select(e => new ExcelRow
             {
                 Values = new Dictionary<string, string>
                 {
                     {"FullName", e.FullName},
                     {"Email", e.Email},
-                    {"Phone", e.PhoneNumber}
+                    {"Phone", e.PhoneNumber},
+                    {"User Type", e.UserType.ToString()},
                 }
             })));
         }

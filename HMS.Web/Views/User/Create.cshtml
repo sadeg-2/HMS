@@ -41,9 +41,10 @@
             <div class="form-group">
                 <label asp-for="UserType" class="control-label"></label>
                 <select asp-for="UserType" class="form-control">
-                    <option value="@UserType.Administrator">مدير</option>
-                    <option value="@UserType.Patient">محرر</option>
-                    <option value="@UserType.Doctor">مسؤول التسجيلات </option>
+                    <option value="@UserType.Nurse">ممرض</option>
+                    <option value="@UserType.Patient">مريض</option>
+                    <option value="@UserType.Doctor">طبيب  </option>
+                    <option value="@UserType.Administrator">ادمن</option>
                 </select>
                 <span asp-validation-for="UserType" class="text-danger"></span>
             </div>

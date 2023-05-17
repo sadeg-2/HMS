@@ -6,6 +6,7 @@ using HMS.Core.Exceptions;
 using HMS.Core.ViewModels;
 using HMS.Data;
 using HMS.Data.Models;
+using HMS.Infrastructure.Helpers;
 using HMS.Infrastructure.Services.Patients;
 using HMS.Infrastructure.Services.Users;
 using Microsoft.AspNetCore.Identity;
@@ -255,6 +256,37 @@ namespace HMS.Infrastructure.Services.Nurses
             }
             return doctor.Id;
 
+        }
+
+        public async Task<byte[]> ExportToExcel()
+        {
+            var users = await _db.Nurses.Include(x => x.User).
+                                Include(nurse => nurse.Doctors).
+                                ThenInclude(doctor => doctor.User)
+                                .Where(x => !x.IsDelete).ToListAsync();
+
+            return ExcelHelpers.ToExcel(new Dictionary<string, ExcelColumn>
+            {
+                {"FullName", new ExcelColumn("FullName", 0)},
+                {"Email", new ExcelColumn("Email", 1)},
+                {"Phone", new ExcelColumn("Phone", 2)},
+                {"ShiftsOfNurse", new ExcelColumn("ShiftsOfNurse", 3)},
+                {"NumberOfPatients", new ExcelColumn("NumberOfPatients", 4)},
+                {"Doctor", new ExcelColumn("Doctor",5)},
+
+
+            }, new List<ExcelRow>(users.Select(e => new ExcelRow
+            {
+                Values = new Dictionary<string, string>
+                {
+                    {"FullName", e.User.FullName},
+                    {"Email", e.User.Email},
+                    {"Phone", e.User.PhoneNumber},
+                    {"ShiftsOfNurse", e.ShiftsOfNurse.ToString()},
+                    {"NumberOfPatients", e.NumberOfPatients.ToString()},
+                    {"Doctor", e.Doctors.User.FullName},
+                }
+            })));
         }
     }
 }

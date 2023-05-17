@@ -6,6 +6,7 @@ using HMS.Core.Exceptions;
 using HMS.Core.ViewModels;
 using HMS.Data;
 using HMS.Data.Models;
+using HMS.Infrastructure.Helpers;
 using HMS.Infrastructure.Services.Users;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -216,7 +217,36 @@ namespace HMS.Infrastructure.Services.Patients
         {
             return Guid.NewGuid().ToString().Substring(1, 7);
         }
-    
+
+        public async Task<byte[]> ExportToExcel()
+        {
+            var users = await _db.Patients.Include(x => x.User).
+                                           Include(x => x.Nurse).ThenInclude(x => x.User).
+                                           Include(x => x.Nurse).ThenInclude(x => x.Doctors).ThenInclude(x => x.User).
+                                           Where(x => !x.IsDelete).ToListAsync();
+
+            return ExcelHelpers.ToExcel(new Dictionary<string, ExcelColumn>
+            {
+                {"FullName", new ExcelColumn("FullName", 0)},
+                {"Email", new ExcelColumn("Email", 1)},
+                {"Phone", new ExcelColumn("Phone", 2)},
+                {"Nurse", new ExcelColumn("Nurse", 3)},
+                {"Doctor", new ExcelColumn("Doctor", 4)},
+
+
+            }, new List<ExcelRow>(users.Select(e => new ExcelRow
+            {
+                Values = new Dictionary<string, string>
+                {
+                    {"FullName", e.User.FullName},
+                    {"Email", e.User.Email},
+                    {"Phone", e.User.PhoneNumber},
+                    {"Nurse", e.Nurse.User.FullName},
+                    {"Doctor", e.Nurse.Doctors.User.FullName},
+
+                }
+            })));
+        }
     }
 }
 

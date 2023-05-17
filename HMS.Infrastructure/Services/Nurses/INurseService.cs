@@ -14,5 +14,6 @@ namespace HMS.Infrastructure.Services.Nurses
         Task<int> Update(UpdateNurseDto dto);
         Task<int> Delete(int Id);
         Task<UpdateNurseDto> Get(int Id);
+        Task<byte[]> ExportToExcel();
     }
 }

@@ -4,6 +4,7 @@ using HMS.Data.Models;
 using HMS.Infrastructure.AutoMapper;
 using HMS.Infrastructure.Services;
 using HMS.Infrastructure.Services.Auth;
+using HMS.Infrastructure.Services.DashBoard;
 using HMS.Infrastructure.Services.Doctors;
 using HMS.Infrastructure.Services.Nurses;
 using HMS.Infrastructure.Services.Patients;
@@ -51,8 +52,9 @@ builder.Services.AddTransient<IEmailService, EmailService>();
 builder.Services.AddTransient<IPatientService, PatientService>();
 builder.Services.AddTransient<IDoctorService, DoctorService>();
 builder.Services.AddTransient<INurseService, NurseService>();
+builder.Services.AddTransient<IDashboardService, DashboardService>();
 
- builder.Services.AddHttpContextAccessor();
+builder.Services.AddHttpContextAccessor();
 
 
 
@@ -63,6 +65,8 @@ builder.Services.AddAutoMapper(typeof(MapperProfile).Assembly);
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
+
+DBseeding.seed(app);
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

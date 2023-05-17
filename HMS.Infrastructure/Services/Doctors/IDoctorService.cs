@@ -14,5 +14,7 @@ namespace HMS.Infrastructure.Services.Doctors
         Task<int> Update(UpdateDoctorDto dto);
         Task<int> Delete(int Id);
         Task<UpdateDoctorDto> Get(int Id);
+        Task<byte[]> ExportToExcel();
+
     }
 }

@@ -1,8 +1,105 @@
-﻿@{
+﻿@model DashboardViewModel
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="card card-custom">
+    <div class="card-header flex-wrap border-0 pt-6 pb-0">
+        <div class="card-title">
+            <h1 class="card-label">
+                احصائيات
+            </h1>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="alert alert-info">
+                        <h3>عدد المرضى</h3>
+                        <h3>@Model.NumberOfPatient</h3>
+                    </div>
+
+
+                </div>
+                <div class="col-md-3">
+                    <div class="alert alert-info">
+                        <h3>عدد الاطباء </h3>
+                        <h3>@Model.NumberOfDoctor</h3>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="alert alert-info">
+                        <h3>عدد الممرضين </h3>
+                        <h3>@Model.NumberOfNurse</h3>
+                    </div>
+                </div>
+        </div>
+        <br />
+        <hr />
+
+        <div class="row">
+            <div class="col-md-6">
+                <h3> توزيع المستخدمين بالنسبة لنوع المستخدم</h3>
+                <canvas id="userTypeChart" width="400" height="400"></canvas>
+            </div>
+        </div>
+        <br />
+        <hr />
+    </div>
 </div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        const userTypeCanvas = document.getElementById('userTypeChart');
+
+        var userTypeValue = [];
+        var userTypeLabels = [];
+        var userTypeColors = [];
+
+        $.ajax({
+            url: "/home/GetUserTypeChartData", success: function (result) {
+
+                $(result).each(function (index, d) {
+                    userTypeValue.push(result[index].value);
+                    userTypeLabels.push(result[index].key);
+                    userTypeColors.push(result[index].color);
+                })
+
+                var usertypeChart = new Chart(userTypeCanvas, {
+                    type: 'pie',
+                    data: {
+                        labels: userTypeLabels,
+                        datasets: [
+                            {
+                                label: '# of Votes',
+                                data: userTypeValue,
+                                borderWidth: 1,
+                                backgroundColor: userTypeColors,
+                                borderColor: [
+                                    'rgba(255,90,30,1)',
+                                    'rgba(255,10,30,1)',
+                                    'rgba(25,80,60,1)',
+                                    'rgba(150,100,200,1)',
+                                ]
+                            }]
+                    },
+                    options: {
+                        //scales: {
+                        //  y: {
+                        //    beginAtZero: true
+                        //  }
+                        //}
+                    }
+                });
+
+            }});
+
+       
+
+    </script>
+
+}

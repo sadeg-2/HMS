@@ -14,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using HMS.Core.Constants;
 using HMS.Core.Exceptions;
 using HMS.Core.Enums;
+using HMS.Infrastructure.Helpers;
 
 namespace HMS.Infrastructure.Services.Doctors
 {
@@ -230,6 +231,32 @@ namespace HMS.Infrastructure.Services.Doctors
         private string GenratePassword()
         {
             return Guid.NewGuid().ToString().Substring(1, 7);
+        }
+
+        public async Task<byte[]> ExportToExcel()
+        {
+            var users = await _db.Doctors.Include(x => x.User).Where(x => !x.IsDelete).ToListAsync();
+
+            var c = ExcelHelpers.ToExcel(new Dictionary<string, ExcelColumn>
+            {
+                {"FullName", new ExcelColumn("FullName", 0)},
+                {"Email", new ExcelColumn("Email", 1)},
+                {"Phone", new ExcelColumn("Phone", 2)},
+               {"shiftsOfDoctor", new ExcelColumn("shiftsOfDoctor", 3)},
+               {"NumberOfNurses", new ExcelColumn("NumberOfNurses", 4)},
+
+            }, new List<ExcelRow>(users.Select(e => new ExcelRow
+            {
+                Values = new Dictionary<string, string>
+                {
+                    {"FullName", e.User.FullName},
+                    {"Email", e.User.Email},
+                    {"Phone", e.User.PhoneNumber},
+                    {"shiftsOfDoctor", e.shiftsOfDoctor + " "},
+                    {"NumberOfNurses", e.NumberOfNurses + " "},
+                }
+            })));
+            return c ;
         }
     }
 }

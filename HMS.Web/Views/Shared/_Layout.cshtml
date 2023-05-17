@@ -170,18 +170,18 @@
                                         <span class="menu-text"> ادارة المستخدمين </span>
                                     </a>
                                 </li>
-
                                 <li class="menu-item menu-item" aria-haspopup="true">
                                     <a href="~/Nurse/Index" class="menu-link">
-                                        <span class="svg-icon svg-icon-primary svg-icon-2x">
-                                            <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo1/dist/../src/media/svg/icons/General/Duplicate.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                        @*  <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo1/dist/../src/media/svg/icons/General/Duplicate.svg-->
+                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                                     <rect x="0" y="0" width="24" height="24" />
                                                     <path d="M15.9956071,6 L9,6 C7.34314575,6 6,7.34314575 6,9 L6,15.9956071 C4.70185442,15.9316381 4,15.1706419 4,13.8181818 L4,6.18181818 C4,4.76751186 4.76751186,4 6.18181818,4 L13.8181818,4 C15.1706419,4 15.9316381,4.70185442 15.9956071,6 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
                                                     <path d="M10.1818182,8 L17.8181818,8 C19.2324881,8 20,8.76751186 20,10.1818182 L20,17.8181818 C20,19.2324881 19.2324881,20 17.8181818,20 L10.1818182,20 C8.76751186,20 8,19.2324881 8,17.8181818 L8,10.1818182 C8,8.76751186 8.76751186,8 10.1818182,8 Z" fill="#000000" />
                                                 </g>
-                                            </svg><!--end::Svg Icon-->
-                                        </span>
+                                            </svg><!--end::Svg Icon-->*@
+                                        <i class="fa fa-user-nurse text-primary  mr-5 icon-lg"></i>
+
                                         <span class="menu-text"> ادارة الممرضين </span>
                                     </a>
                                 </li>
@@ -214,74 +214,35 @@
                                     </a>
                                 </li>
                             }
-                            else if (ViewBag.UserType == "ArticleAuthor")
+                            else if (ViewBag.UserType == "Patient")
                             {
                                 <li class="menu-item menu-item" aria-haspopup="true">
-                                    <a href="~/Category/Index" class="menu-link">
+                                    <a href="~/Patient/Profile" class="menu-link">
                                         <span class="svg-icon svg-icon-primary svg-icon-2x">
-                                            <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo1/dist/../src/media/svg/icons/General/Duplicate.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                            <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo1/dist/../src/media/svg/icons/Files/User-folder.svg-->
+                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                                     <rect x="0" y="0" width="24" height="24" />
-                                                    <path d="M15.9956071,6 L9,6 C7.34314575,6 6,7.34314575 6,9 L6,15.9956071 C4.70185442,15.9316381 4,15.1706419 4,13.8181818 L4,6.18181818 C4,4.76751186 4.76751186,4 6.18181818,4 L13.8181818,4 C15.1706419,4 15.9316381,4.70185442 15.9956071,6 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
-                                                    <path d="M10.1818182,8 L17.8181818,8 C19.2324881,8 20,8.76751186 20,10.1818182 L20,17.8181818 C20,19.2324881 19.2324881,20 17.8181818,20 L10.1818182,20 C8.76751186,20 8,19.2324881 8,17.8181818 L8,10.1818182 C8,8.76751186 8.76751186,8 10.1818182,8 Z" fill="#000000" />
+                                                    <path d="M3.5,21 L20.5,21 C21.3284271,21 22,20.3284271 22,19.5 L22,8.5 C22,7.67157288 21.3284271,7 20.5,7 L10,7 L7.43933983,4.43933983 C7.15803526,4.15803526 6.77650439,4 6.37867966,4 L3.5,4 C2.67157288,4 2,4.67157288 2,5.5 L2,19.5 C2,20.3284271 2.67157288,21 3.5,21 Z" fill="#000000" opacity="0.3" />
+                                                    <path d="M12,13 C10.8954305,13 10,12.1045695 10,11 C10,9.8954305 10.8954305,9 12,9 C13.1045695,9 14,9.8954305 14,11 C14,12.1045695 13.1045695,13 12,13 Z" fill="#000000" opacity="0.3" />
+                                                    <path d="M7.00036205,18.4995035 C7.21569918,15.5165724 9.36772908,14 11.9907452,14 C14.6506758,14 16.8360465,15.4332455 16.9988413,18.5 C17.0053266,18.6221713 16.9988413,19 16.5815,19 C14.5228466,19 11.463736,19 7.4041679,19 C7.26484009,19 6.98863236,18.6619875 7.00036205,18.4995035 Z" fill="#000000" opacity="0.3" />
                                                 </g>
                                             </svg><!--end::Svg Icon-->
                                         </span>
-                                        <span class="menu-text"> ادارة التصنيفات </span>
-                                    </a>
-                                </li>
-                                <li class="menu-item menu-item" aria-haspopup="true">
-                                    <a href="~/Post/Index" class="menu-link">
-                                        <span class="svg-icon svg-icon-primary svg-icon-2x">
-                                            <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo1/dist/../src/media/svg/icons/Communication/Write.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                    <rect x="0" y="0" width="24" height="24" />
-                                                    <path d="M12.2674799,18.2323597 L12.0084872,5.45852451 C12.0004303,5.06114792 12.1504154,4.6768183 12.4255037,4.38993949 L15.0030167,1.70195304 L17.5910752,4.40093695 C17.8599071,4.6812911 18.0095067,5.05499603 18.0083938,5.44341307 L17.9718262,18.2062508 C17.9694575,19.0329966 17.2985816,19.701953 16.4718324,19.701953 L13.7671717,19.701953 C12.9505952,19.701953 12.2840328,19.0487684 12.2674799,18.2323597 Z" fill="#000000" fill-rule="nonzero" transform="translate(14.701953, 10.701953) rotate(-135.000000) translate(-14.701953, -10.701953) " />
-                                                    <path d="M12.9,2 C13.4522847,2 13.9,2.44771525 13.9,3 C13.9,3.55228475 13.4522847,4 12.9,4 L6,4 C4.8954305,4 4,4.8954305 4,6 L4,18 C4,19.1045695 4.8954305,20 6,20 L18,20 C19.1045695,20 20,19.1045695 20,18 L20,13 C20,12.4477153 20.4477153,12 21,12 C21.5522847,12 22,12.4477153 22,13 L22,18 C22,20.209139 20.209139,22 18,22 L6,22 C3.790861,22 2,20.209139 2,18 L2,6 C2,3.790861 3.790861,2 6,2 L12.9,2 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
-                                                </g>
-                                            </svg><!--end::Svg Icon-->
-                                        </span>
-                                        <span class="menu-text"> ادارة الاخبار </span>
-                                    </a>
-                                </li>
-
-
-                            }
-                            else if (ViewBag.UserType == "TrackAdministrator")
-                            {
-
-
-
-
-                                <li class="menu-item menu-item" aria-haspopup="true">
-                                    <a href="~/Category/Index" class="menu-link">
-                                        <span class="svg-icon svg-icon-primary svg-icon-2x">
-                                            <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo1/dist/../src/media/svg/icons/General/Duplicate.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                    <rect x="0" y="0" width="24" height="24" />
-                                                    <path d="M15.9956071,6 L9,6 C7.34314575,6 6,7.34314575 6,9 L6,15.9956071 C4.70185442,15.9316381 4,15.1706419 4,13.8181818 L4,6.18181818 C4,4.76751186 4.76751186,4 6.18181818,4 L13.8181818,4 C15.1706419,4 15.9316381,4.70185442 15.9956071,6 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
-                                                    <path d="M10.1818182,8 L17.8181818,8 C19.2324881,8 20,8.76751186 20,10.1818182 L20,17.8181818 C20,19.2324881 19.2324881,20 17.8181818,20 L10.1818182,20 C8.76751186,20 8,19.2324881 8,17.8181818 L8,10.1818182 C8,8.76751186 8.76751186,8 10.1818182,8 Z" fill="#000000" />
-                                                </g>
-                                            </svg><!--end::Svg Icon-->
-                                        </span>
-                                        <span class="menu-text"> ادارة التصنيفات </span>
-                                    </a>
-                                </li>
-                                <li class="menu-item menu-item" aria-haspopup="true">
-                                    <a href="~/Track/Index" class="menu-link">
-                                        <span class="svg-icon svg-icon-primary svg-icon-2x">
-                                            <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo1/dist/../src/media/svg/icons/Media/Music-cloud.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                    <rect x="0" y="0" width="24" height="24" />
-                                                    <path d="M14.9297424,9 L18,9 C21.3137085,9 24,11.6862915 24,15 C24,18.3137085 21.3137085,21 18,21 L9,21 C8.84387716,21 8.68914702,20.9940371 8.53602492,20.9823266 C8.35886438,20.9940469 8.18012741,21 8,21 C3.581722,21 0,17.418278 0,13 C0,8.581722 3.581722,5 8,5 C10.9611294,5 13.5465048,6.60879452 14.9297424,9 Z" fill="#000000" opacity="0.3" />
-                                                    <path d="M10.5833333,18.5 C9.70888248,18.5 9,17.8919916 9,17.1419753 C9,16.391959 9.70888248,15.7839506 10.5833333,15.7839506 C10.7683909,15.7839506 10.9460333,15.8111809 11.1111111,15.8612248 L11.1111111,12.0925343 C11.1111111,11.8139918 11.2798844,11.5677693 11.5277603,11.484687 L14.5624826,10.5294328 C14.9448163,10.4012833 15.3333333,10.7076449 15.3333333,11.1372801 L15.3333333,12.0925343 C15.3333333,12.4109524 15.0436696,12.6143119 14.8055556,12.6728395 C14.4629575,12.7570489 13.5833278,12.9381188 12.1666667,13.2160494 L12.1666667,17.1697968 C12.1666667,17.2185655 12.1628241,17.2637188 12.1553303,17.3053217 C12.0612659,17.9783191 11.3933298,18.5 10.5833333,18.5 Z" fill="#000000" />
-                                                </g>
-                                            </svg><!--end::Svg Icon-->
-                                        </span>
-                                        <span class="menu-text"> ادارة التسجيلات </span>
+                                        <span class="menu-text"> ادارة المستخدمين </span>
                                     </a>
                                 </li>
                             }
+                            else if (ViewBag.UserType == "Nurse")
+                            {
+
+                            }
+                            else if (ViewBag.UserType == "Doctor") {
+                            
+
+                            }
+
+
 
                         </ul>
                     </div>
