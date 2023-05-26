@@ -15,6 +15,7 @@ using HMS.Infrastructure.Helpers;
 using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
 using System.Linq;
+using HMS.Core.Enums;
 
 namespace HMS.Infrastructure.Services.Users
 {
@@ -53,7 +54,12 @@ namespace HMS.Infrastructure.Services.Users
         }
         public async Task<ResponseDto> GetAll(Pagination pagination, Query query)
         {
-            var queryString = _db.Users.Where(x => !x.IsDelete && (x.FullName.Contains(query.GeneralSearch) || string.IsNullOrWhiteSpace(query.GeneralSearch) || x.Email.Contains(query.GeneralSearch) || x.PhoneNumber.Contains(query.GeneralSearch))).AsQueryable();
+            var queryString = _db.Users.Where(
+                x => !x.IsDelete && (
+                x.FullName.Contains(query.GeneralSearch)
+                || string.IsNullOrWhiteSpace(query.GeneralSearch)                 
+               
+                )).AsQueryable();
 
             var dataCount = queryString.Count();
             var skipValue = pagination.GetSkipValue();
@@ -144,6 +150,8 @@ namespace HMS.Infrastructure.Services.Users
                 user.ImageUrl = await _fileService.SaveFile(dto.Image, FolderNames.ImagesFolder);
             }
             _db.Users.Update(user);
+            await _emailService.Send(user.Email, "Updated Your Data ! ","Your Data is updated hh");
+
             _db.SaveChanges();
             return user.Id;
         }

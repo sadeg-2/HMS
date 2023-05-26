@@ -27,11 +27,15 @@ namespace HMS.Web.Controllers
         {
             if (userType != "Administrator")
             {
-                return Redirect("/Patient");
+                return Redirect("/home/privacy");
             }
             var data = await _dashboardService.GetData();
 
             return View(data);
+        }
+        public async Task<IActionResult> Privacy()
+        {
+            return View();
         }
 
         public async Task<IActionResult> GetUserTypeChartData()
